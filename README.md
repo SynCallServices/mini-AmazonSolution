@@ -9,3 +9,5 @@
 Your github project must named after your project branch and made using the "Basic Kanban" template.
 
 Inside your description you must place your teammates names.
+
+**Deadline 31/03/2022**
