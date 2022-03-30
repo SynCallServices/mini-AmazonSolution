@@ -10,4 +10,9 @@ Your github project must named after your project branch and made using the "Bas
 
 Inside your description you must place your teammates names.
 
+## Development Environment
+
+Node (v16.14 or above)
+
+
 **Deadline 31/03/2022**
