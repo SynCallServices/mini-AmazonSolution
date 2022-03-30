@@ -13,6 +13,6 @@ Inside your description you must place your teammates names.
 ## Development Environment
 
 Node (v16.14 or above)
-
+For using Amazon stuff install npm -g @aws-amplify/cli (-g will install it globaly, so remember to uninstall when you're done with the project)
 
 **Deadline 31/03/2022**
