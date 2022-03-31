@@ -20,3 +20,11 @@ Your project should look something like this:
 ![](https://i.imgur.com/6CgjObu.png)
 
 **Deadline 31/03/2022**
+
+## Creating a React App
+> Create app cmd: 
+```
+npx create-react-app my-app
+cd my-app
+npm start
+```
