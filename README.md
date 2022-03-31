@@ -28,3 +28,5 @@ npx create-react-app my-app
 cd my-app
 npm start
 ```
+## Useful links
+https://babeljs.io/repl - To translate from js to React
