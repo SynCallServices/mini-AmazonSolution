@@ -1,0 +1,55 @@
+.buttons {
+    margin: 0 auto;
+    width: 100%;
+    display:inline;
+}
+
+
+
+.buttons a {
+    margin: 10px;
+    /*box-shadow:0 0 10px rgba(0, 0, 0, 0.5);;*/
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.buttons a:link, .buttons a:visited {
+    background-color: white;
+    color: black;
+    /*border: 2px solid green;*/
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.buttons a:hover, .buttons a:active {
+    background-color: rgba(0, 0, 0, 0.078);
+    box-shadow:0 10px 6px -6px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+    /*color: white;*/
+}
+
+.secondaryButton a:link, .secondaryButton a:visited {
+    background-color: #00bcd4;
+    color: white
+}
+
+.secondaryButton a:hover, .secondaryButton a:active {
+    background-color: rgb(0, 161, 183);
+    box-shadow:0 10px 6px -6px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset ;
+}
+
+.defaultButton a:hover, .defaultButton a:active {
+    background-color: rgba(0, 0, 0, 0.078) ;
+    box-shadow:0 10px 6px -6px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.defaultButtonSelected {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+
+}
+.secondaryButtonSelected {
+    background-color: rgb(0, 139, 161) !important;
+
+}
