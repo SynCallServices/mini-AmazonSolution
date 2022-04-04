@@ -1,0 +1,11 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type Videos @model {
+  id: ID! # the ! means it's a required field
+  name: String!
+  agentName: String!
+  topic: String!
+  filePath: String! # URL to S3
+}

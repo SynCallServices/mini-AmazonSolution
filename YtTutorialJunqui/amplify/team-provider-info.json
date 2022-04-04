@@ -10,6 +10,11 @@
       "StackName": "amplify-yttutorialjunqui-dev-165331",
       "StackId": "arn:aws:cloudformation:us-east-1:688487247453:stack/amplify-yttutorialjunqui-dev-165331/8cf307c0-b145-11ec-82df-0e35708e8a2f",
       "AmplifyAppId": "d2gq3xcoc8ihfs"
+    },
+    "categories": {
+      "auth": {
+        "yttutorialjunquidc7f9ffa": {}
+      }
     }
   }
 }
