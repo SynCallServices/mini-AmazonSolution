@@ -1,16 +1,19 @@
 import logo from './fotish.jpg';
 import './App.css';
-import Amplify from 'aws-amplify';
-import awsconfig from './aws-exports'
-import {AmplifySignOut, withAuthenticator} from '@aws-amplify/ui-react'
 
-Amplify.configure(awsconfig)
+import {withAuthenticator} from '@aws-amplify/ui-react'
 
-function App() {
+const withAuthenticatorConfig = {
+  usernameAttributes: 'email',
+  signUpConfig: {hiddenDefaults: ['phone number'], },
+};
+
+function App({signOut, user}) {
   return (
     <div className="App">
       <header className="App-header">
-        <AmplifySignOut />
+        <h1>Hello {user.username}</h1>
+        <button onClick={signOut}>Sign out</button>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           <br />Hello World ✌️🥴
@@ -20,4 +23,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, withAuthenticatorConfig);

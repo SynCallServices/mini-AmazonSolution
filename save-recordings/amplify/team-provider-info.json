@@ -10,11 +10,6 @@
       "StackName": "amplify-saverecordings-dev-183047",
       "StackId": "arn:aws:cloudformation:us-east-1:688487247453:stack/amplify-saverecordings-dev-183047/f6c693e0-b089-11ec-b649-1260b3809595",
       "AmplifyAppId": "d5f9gphc2sudz"
-    },
-    "categories": {
-      "auth": {
-        "saverecordingsf7ccfd10": {}
-      }
     }
   }
 }
