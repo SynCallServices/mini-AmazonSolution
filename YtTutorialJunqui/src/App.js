@@ -14,14 +14,14 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 Amplify.configure(awsconfig);
 
 function App({ signOut, user }) {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello {user.username}</h1>
-        <button onClick={signOut}>Sign out</button>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <header className="App-header">
+                <h1>Hello {user.username}</h1>
+                <button onClick={signOut}>Sign out</button>
+            </header>
+        </div>
+    );
 }
 
 // Exporting the app within the withAuthenticator will enable Amazon cognito user auth
