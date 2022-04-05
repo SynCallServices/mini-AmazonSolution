@@ -1,9 +1,34 @@
-# Amazon mini Proyectos
+# Save Recodings Mini-project
 
 ## Development Environment
 
-Node (v16.14 or above)
-For using Amazon stuff install npm install -g @aws-amplify/cli (-g will install it globaly, so remember to uninstall when you're done with the project)
+- Node => v16.14.0+
+- npm => v8.0.0+
+- react => v18.0.0+ 
+
+## Useful commands
+
+**Amazon Amplify CLI**
+
+```powershell
+npm install @aws-amplify/cli
+```
+
+**Push Amplify configuration to the cloud**
+
+```powershell
+amplify push
+```
+
+**Create a REST or GraphQL API and add it to the Amplify configuration**
+```powershell
+amplify add api
+```
+
+**Show current status of the Amplify project**
+```powershell
+amplify status
+```
 
 ## GraphQL Notes
 
