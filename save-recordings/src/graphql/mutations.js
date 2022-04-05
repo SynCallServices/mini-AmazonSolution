@@ -7,9 +7,9 @@ export const createVoiceRecordings = /* GraphQL */ `
     $condition: ModelVoiceRecordingsConditionInput
   ) {
     createVoiceRecordings(input: $input, condition: $condition) {
-      video_id
+      voice_id
       agent_id
-      video_path
+      voice_path
       description
       id
       createdAt
@@ -23,9 +23,9 @@ export const updateVoiceRecordings = /* GraphQL */ `
     $condition: ModelVoiceRecordingsConditionInput
   ) {
     updateVoiceRecordings(input: $input, condition: $condition) {
-      video_id
+      voice_id
       agent_id
-      video_path
+      voice_path
       description
       id
       createdAt
@@ -39,9 +39,9 @@ export const deleteVoiceRecordings = /* GraphQL */ `
     $condition: ModelVoiceRecordingsConditionInput
   ) {
     deleteVoiceRecordings(input: $input, condition: $condition) {
-      video_id
+      voice_id
       agent_id
-      video_path
+      voice_path
       description
       id
       createdAt
