@@ -3,9 +3,9 @@
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
 type voiceRecordings @model {
-  video_id: ID!
+  voice_id: ID!
   agent_id: String!
-  video_path: String!
+  voice_path: String!
   description: String
 }
 

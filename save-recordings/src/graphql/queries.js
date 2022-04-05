@@ -4,9 +4,9 @@
 export const getVoiceRecordings = /* GraphQL */ `
   query GetVoiceRecordings($id: ID!) {
     getVoiceRecordings(id: $id) {
-      video_id
+      voice_id
       agent_id
-      video_path
+      voice_path
       description
       id
       createdAt
@@ -22,9 +22,9 @@ export const listVoiceRecordings = /* GraphQL */ `
   ) {
     listVoiceRecordings(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        video_id
+        voice_id
         agent_id
-        video_path
+        voice_path
         description
         id
         createdAt

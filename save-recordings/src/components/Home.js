@@ -7,7 +7,7 @@ import { API, graphqlOperation } from 'aws-amplify';
 import { createVoiceRecordings } from '../graphql/mutations';
 import { listVoiceRecordings } from '../graphql/queries';
 
-const initialState = { video_id: '000'}
+const initialState = { voice_id: '', agent_id: ''}
 
 function Home() {
   const [formState, setFormState] = useState(initialState);
@@ -32,7 +32,7 @@ function Home() {
   async function addVoiceRecordings()
   {
     try{
-      if (!formState.Voice_id) return
+      if (!formState.voice_id) return
       const voiceRecording = { ...formState }
       setVoiceRecordings([...voiceRecordings, voiceRecording])
       setFormState(initialState)
@@ -55,6 +55,7 @@ function Home() {
         voiceRecordings.map((voiceRecording, index) => (
           <div key={voiceRecording.id ? voiceRecording.id : index} className='voiceRecording'>
             <p className='voiceRecordingVoiceId'>{voiceRecording.voice_id}</p>
+            <p className='voiceRecordingVoiceId'>-{voiceRecording.agent_id}-</p> 
           </div>
         ))
       }

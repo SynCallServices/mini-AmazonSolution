@@ -4,9 +4,9 @@
 export const onCreateVoiceRecordings = /* GraphQL */ `
   subscription OnCreateVoiceRecordings {
     onCreateVoiceRecordings {
-      video_id
+      voice_id
       agent_id
-      video_path
+      voice_path
       description
       id
       createdAt
@@ -17,9 +17,9 @@ export const onCreateVoiceRecordings = /* GraphQL */ `
 export const onUpdateVoiceRecordings = /* GraphQL */ `
   subscription OnUpdateVoiceRecordings {
     onUpdateVoiceRecordings {
-      video_id
+      voice_id
       agent_id
-      video_path
+      voice_path
       description
       id
       createdAt
@@ -30,9 +30,9 @@ export const onUpdateVoiceRecordings = /* GraphQL */ `
 export const onDeleteVoiceRecordings = /* GraphQL */ `
   subscription OnDeleteVoiceRecordings {
     onDeleteVoiceRecordings {
-      video_id
+      voice_id
       agent_id
-      video_path
+      voice_path
       description
       id
       createdAt
