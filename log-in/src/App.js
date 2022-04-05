@@ -2,23 +2,26 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import AWS from "aws-sdk";
+import fs from "fs";
 
 import 'cross-fetch/polyfill';
 import AmazonCognitoIdentity from 'amazon-cognito-identity-js';
 
+require("dotenv").config();
+
+AWS.config.update({ region: "us-east-1"});
 AWS.config.update("./config.json");
-// AWS.config.update({ region: "us-east-1"});
 
 // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-//   IdentityPoolId: "us-east-1:1699ebc0-7900-4099-b910-2df94f52a030",
+//   IdentityPoolId: "",
 //   Logins: {
 //     "www.amazon.com": "AMAZONTOKEN"
 //   }
 // })
 
 var params = {
-  InstanceId: "arn:aws:connect:us-east-1:688487247453:instance/7467e190-ad8b-402a-ace9-90370c53914d",
-  Origin: "csf-test-1"
+  InstanceId: "",
+  Origin: ""
 };
 
 // AWS.config.getCredentials(function(err) {
