@@ -1,4 +1,4 @@
-# Save Recodings Mini-project
+# Save Recordings Mini-project
 
 ## Development Environment
 
