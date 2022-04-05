@@ -1,4 +1,5 @@
 import '../assets/styles/Home.css'
+import Button from './Button'
 
 import { useEffect, useState } from 'react';
 
@@ -57,6 +58,7 @@ function Home() {
           </div>
         ))
       }
+      <Button />
     </div>
   )
 }

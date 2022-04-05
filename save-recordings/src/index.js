@@ -5,7 +5,7 @@ import './assets/styles/index.css';
 import Home from './components/Home'
 import reportWebVitals from './reportWebVitals';
 
-import Amplify from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import awsConfig from './aws-exports';
 
 Amplify.configure(awsConfig);
