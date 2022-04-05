@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: --> 
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- With this script, I can include JSX in this HTML file inside <script type="text/babel"> tags -->
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+    
+      function MyApp() {
+        return <h1>Hello, world!</h1>;
+      }
+
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<MyApp />);
+
+    </script>
+
+    <div id="button"></div>
+    <script type="text/babel">
+
+        function Button1() {
+            return <button type="button"> This is a button! </button>;
+        }
+
+        const container2 = document.getElementById('button');
+        const button = ReactDOM.createRoot(container2);
+        button.render(<Button1 />);
+    </script>
+    
+  </body>
+</html>
