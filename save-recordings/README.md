@@ -68,6 +68,28 @@ class Header extends React.Component {
 
 ### **React Hooks**
 
+*There is only one rule we must follow using react hooks, and it is that they **must** be called on the top level of a component*
+
+```javascript
+function App () {
+
+  useHook(); // ✅
+
+  const fun () => {
+
+    useHook(); // ❌
+
+  }
+
+  return (
+    <div>
+      <h1>Hello World!</h1>
+    </div>
+  )
+
+}
+```
+
 - **useState** -> Returns a stateful value and a function to update it.
 - **useEffect** -> Perform side effects in function components. (*Make HTTP requests*)
 
