@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # Amazon mini Proyectos
 
 ## Team Tracking 
@@ -40,4 +38,4 @@ Your project should look something like this:
 ![](https://i.imgur.com/6CgjObu.png)
 
 **Deadline 31/03/2022**
->>>>>>> parent of fbedb74... Update README.md
+
