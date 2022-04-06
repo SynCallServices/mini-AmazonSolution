@@ -63,6 +63,4 @@ function Home() {
   )
 }
 
-// Change
-
 export default Home;
