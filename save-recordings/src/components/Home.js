@@ -32,7 +32,7 @@ function Home() {
       const voiceRecordingsData = await API.graphql(graphqlOperation(listVoiceRecordings))
       const voiceRecordings = voiceRecordingsData.data.listVoiceRecordings.items
       setVoiceRecordings(voiceRecordings)
-    } catch (err) {console.log('Error fetching Voice recordings.')}
+    } catch (err) {console.log('Error fetching Voice recordings.', err)}
   }
 
   async function addVoiceRecordings()
@@ -67,6 +67,7 @@ function Home() {
         placeholder="Voice Recording Path"
       />
       <button onClick={addVoiceRecordings}>Create Voice Recording entry</button>
+      <button onClick={fetchVoiceRecordings}>Get Voice Recordings</button>
       {
         voiceRecordings.map((voiceRecording, index) => (
           <div key={voiceRecording.id ? voiceRecording.id : index} className='voiceRecording'>
