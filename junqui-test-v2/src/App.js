@@ -9,8 +9,6 @@ import awsconfig from './aws-exports';
 // Imports needed only for login (probs, idk ¯\_ಠ_ಠ_/¯)
 import { withAuthenticator } from '@aws-amplify/ui-react';
 
-// import '../node_modules/@aws-amplify/ui-react/dist/styles.css';
-
 Amplify.configure(awsconfig);
 
 function App({ signOut, user }) {
