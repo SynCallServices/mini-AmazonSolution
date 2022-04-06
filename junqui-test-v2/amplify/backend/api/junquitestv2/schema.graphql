@@ -8,4 +8,5 @@ type Videos @model {
     agentName: String!
     topic: String!
     filePath: String! # URL to S3
+    # tags: {}
 }
