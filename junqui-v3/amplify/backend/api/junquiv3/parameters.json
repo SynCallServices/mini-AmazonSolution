@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "junquiv3",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authjunquiv3b8caf838",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

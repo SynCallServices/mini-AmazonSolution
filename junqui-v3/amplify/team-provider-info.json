@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-junquiv3-dev-181101-authRole",
+      "UnauthRoleArn": "arn:aws:iam::688487247453:role/amplify-junquiv3-dev-181101-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::688487247453:role/amplify-junquiv3-dev-181101-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-junquiv3-dev-181101-deployment",
+      "UnauthRoleName": "amplify-junquiv3-dev-181101-unauthRole",
+      "StackName": "amplify-junquiv3-dev-181101",
+      "StackId": "arn:aws:cloudformation:us-east-1:688487247453:stack/amplify-junquiv3-dev-181101/21543f20-b5ff-11ec-bb88-0a472163dfd1",
+      "AmplifyAppId": "d36qrsay4av67i"
+    },
+    "categories": {
+      "auth": {
+        "junquiv3b8caf838": {}
+      }
+    }
+  }
+}
