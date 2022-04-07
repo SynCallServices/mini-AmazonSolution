@@ -1,3 +1,5 @@
 .btn {
-    border-radius: 20%;
+    margin: 5px;
+    border: none;
+    border-radius: 12px;
 }

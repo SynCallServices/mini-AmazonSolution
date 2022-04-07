@@ -21,9 +21,7 @@ function Home() {
     ]
   )
 
-
-
-  function setInput(key, value) {
+  const setInput = (key, value) => {
     setState({...state, [key]:value})
   }
 
@@ -66,8 +64,8 @@ function Home() {
         value={state.voice_path}
         placeholder="Voice Recording Path"
       />
-      <button onClick={addVoiceRecordings}>Create Voice Recording entry</button>
-      <button onClick={fetchVoiceRecordings}>Get Voice Recordings</button>
+      <Button onClick={addVoiceRecordings} text="Create Voice Recording entry" color="#6B9080"/>
+      <Button onClick={fetchVoiceRecordings} text="Get Voice Recordings" color="#6B9080"/>
       {
         voiceRecordings.map((voiceRecording, index) => (
           <div key={voiceRecording.id ? voiceRecording.id : index} className='voiceRecording'>

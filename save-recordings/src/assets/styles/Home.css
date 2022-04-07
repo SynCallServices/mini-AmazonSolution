@@ -3,7 +3,6 @@
     margin: 0px auto; 
     display: flex; 
     flex-direction: column; 
-    justify-content: center; 
     padding: 20px;
 }
 
@@ -13,10 +12,11 @@
 
 input{
     border: none;
-    background-color: #ddd;
+    background-color: #F6FFF8;
     margin-bottom: 10px;
     padding: 8px;
     font-size: 18px;
+    border-radius: 12px;
 }
 
 .voiceRecordingVoiceId {
