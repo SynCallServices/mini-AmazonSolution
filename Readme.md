@@ -3,8 +3,8 @@ Original project forked from: Louis3797/awesome-readme-template
 -->
 <div align="center">
 
-  <img src="assets/logo.png" alt="logo" width="200" height="auto" />
-  <h1>Amazon Solution mini-projects</h1>
+  <img src="assets/team.jpg" alt="logo" width="200" height="auto" />
+  <h1>Save Recordings mini-projects</h1>
   
   
   
@@ -80,8 +80,6 @@ Original project forked from: Louis3797/awesome-readme-template
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
-    <li><a href="https://nextjs.org/">Next.js</a></li>
     <li><a href="https://reactjs.org/">React.js</a></li>
     <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
   </ul>
@@ -90,13 +88,7 @@ Original project forked from: Louis3797/awesome-readme-template
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-    <li><a href="https://go.dev/">Golang</a></li>
-    <li><a href="https://nestjs.com/">Nest.js</a></li>
-    <li><a href="https://socket.io/">SocketIO</a></li>
-    <li><a href="https://www.prisma.io/">Prisma</a></li>    
-    <li><a href="https://www.apollographql.com/">Apollo</a></li>
+    <li><a href="https://nodejs.org/en/">Node.js</a></li>
     <li><a href="https://graphql.org/">GraphQL</a></li>
   </ul>
 </details>
@@ -104,20 +96,14 @@ Original project forked from: Louis3797/awesome-readme-template
 <details>
 <summary>Database</summary>
   <ul>
-    <li><a href="https://www.mysql.com/">MySQL</a></li>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-    <li><a href="https://redis.io/">Redis</a></li>
-    <li><a href="https://neo4j.com/">Neo4j</a></li>
-    <li><a href="https://www.mongodb.com/">MongoDB</a></li>
+    <li><a href="https://aws.amazon.com/dynamodb/">DynamoDB</a></li>
   </ul>
 </details>
 
 <details>
 <summary>DevOps</summary>
   <ul>
-    <li><a href="https://www.docker.com/">Docker</a></li>
-    <li><a href="https://www.jenkins.io/">Jenkins</a></li>
-    <li><a href="https://circleci.com/">CircleCLI</a></li>
+    <li><a href="https://aws.amazon.com/amplify/">Amazon Amplify</a></li>
   </ul>
 </details>
 
@@ -144,9 +130,7 @@ Original project forked from: Louis3797/awesome-readme-template
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`API_KEY`
-
-`ANOTHER_API_KEY`
+**`TBD`**
 
 <!-- Getting Started -->
 ## 	:toolbox: Getting Started
@@ -154,21 +138,14 @@ To run this project, you will need to add the following environment variables to
 <!-- Prerequisites -->
 ### :bangbang: Prerequisites
 
-This project uses Yarn as package manager
+Have Node.Js installed.
 
-```bash
- npm install --global yarn
-```
+- [Node.Js](https://nodejs.org/en/)
 
 <!-- Installation -->
 ### :gear: Installation
 
-Install my-project with npm
-
-```bash
-  yarn install my-project
-  cd my-project
-```
+**Our poject cannot yet be installed using a package manager**
    
 <!-- Running Tests -->
 ### :test_tube: Running Tests
@@ -185,25 +162,25 @@ To run tests, run the following command
 Clone the project
 
 ```bash
-  git clone https://github.com/Louis3797/awesome-readme-template.git
+  git clone https://github.com/PrimeBIue/mini-AmazonSolution/
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd save-recordings
 ```
 
 Install dependencies
 
 ```bash
-  yarn install
+  npm install
 ```
 
 Start the server
 
 ```bash
-  yarn start
+  npm start
 ```
 
 
@@ -213,7 +190,8 @@ Start the server
 To deploy this project run
 
 ```bash
-  yarn deploy
+  amplify push
+  amplify publish
 ```
 
 
@@ -241,39 +219,26 @@ function App() {
 <!-- Contributing -->
 ## :wave: Contributing
 
-<a href="https://github.com/PrimeBIue/mini-AmazonSolution/graphs/contributors">
+- [Xime](https://github.com/Ximena-gonzalez)  
+- [Junqui](https://github.com/SebastianJuncosL)
+- [Matt](https://github.com/mateoglzc)
+
+<!-- <a href="https://github.com/PrimeBIue/mini-AmazonSolution/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=PrimeBIue/mini-AmazonSolution" />
-</a>
-
-<!-- Code of Conduct -->
-### :scroll: Code of Conduct
-
-Please read the [Code of Conduct](https://github.com/Louis3797/awesome-readme-template/blob/master/CODE_OF_CONDUCT.md)
-
-<!-- FAQ -->
-## :grey_question: FAQ
-
-- Question 1
-
-  + Answer 1
-
-- Question 2
-
-  + Answer 2
-
+</a> -->
 
 <!-- License -->
 ## :warning: License
 
 Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License. See LICENSE.txt for more information.
 
-
 <!-- Contact -->
 ## :handshake: Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Open a discussion: [
+  mini-AmazonSolution/discussions](https://github.com/PrimeBIue/mini-AmazonSolution/discussions)
 
-Project Link: [https://github.com/PrimeBIue/mini-AmazonSolution](https://github.com/PrimeBIue/mini-AmazonSolution)
+Project Link: [mini-AmazonSolution](https://github.com/PrimeBIue/mini-AmazonSolution)
 
 
 <!-- Acknowledgments -->
