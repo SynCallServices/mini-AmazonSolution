@@ -46,5 +46,17 @@
   border: .5vw solid rgb(0, 0, 70);
   border-radius: 5%;
   padding: 5% 0%;
-  margin: 18% auto 0 auto;
+  margin: 5% auto 0 auto;
+}
+
+#registerForm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  width: 30%;
+  border: .5vw solid rgb(0, 0, 70);
+  border-radius: 5%;
+  padding: 5% 0%;
+  margin: 5% auto 0 auto;
 }
