@@ -1,62 +1,83 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+* {
+  background-color: rgb(5, 5, 5);
   color: white;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2vw;
 }
 
-.App-link {
-  color: #61dafb;
+html, body {
+  height: 100%;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#loginForm {
+#flexForm {
   display: flex;
   align-items: center;
   flex-direction: column;
-  text-align: left;
-  width: 30%;
-  border: .5vw solid rgb(0, 0, 70);
-  border-radius: 5%;
-  padding: 5% 0%;
-  margin: 5% auto 0 auto;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid white;
+  border-radius: .2vw;
 }
 
-#registerForm {
+#flexForm label {
+  padding: 5% 4%;
+}
+
+#flexForm input:not(input[type="submit"]){
+  border: .1vw solid white;
+  border-radius: .2vw;
+  margin: 5% 5% 0;
+  padding: 1.5%;
+}
+
+#flexForm input[type="submit"] {
+  padding: 2%;
+  margin: 0 auto 5%;
+  width: 50%;
+  border: .1vw solid white;
+  border-radius: .2vw;
+}
+
+#flexForm input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: rgb(30, 30, 30);
+}
+
+#flexButtons {
   display: flex;
   align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  border-bottom: 1px solid white;
+}
+
+#flexButtons div {
+  width: 50%;
+  text-align: center;
+  padding: 5% 0;
+}
+
+#flexButtons div:hover {
+  cursor: pointer;
+}
+
+.select_true {
+  background-color: rgb(30, 30, 30);
+}
+
+.select_false {
+  background-color: rgb(7, 7, 7);
+}
+
+.formClass {
+  display: flex;
   flex-direction: column;
   text-align: left;
-  width: 30%;
-  border: .5vw solid rgb(0, 0, 70);
-  border-radius: 5%;
-  padding: 5% 0%;
-  margin: 5% auto 0 auto;
+  width: 100%;
 }

@@ -18,6 +18,7 @@ function LoginUser(user, password) {
     cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
             console.log("entered success");
+            alert("Successful login");
         },
         onFailure: function(err) {
             console.log(err);
@@ -50,25 +51,24 @@ function LoginForm () {
     let { name, password } = document.forms[0];
     name = name.value;
     password = password.value;
-    console.log(name, password);
     event.preventDefault();
     LoginUser(name, password);
     document.getElementById("loginForm").reset();
     }
 
     return (
-        <form onSubmit={handleSubmit} id="loginForm">
+        <form onSubmit={handleSubmit} id="loginForm" className="formClass">
             <label>
                 Name:<br/>
-                <input name="name" type="text" required />
             </label>
+            <input name="name" type="text" required />
             <br/>
             <label>
                 Password:<br/>
-                <input name="password" type="password" required />
             </label>
+            <input name="password" type="password" required />
             <br/>
-            <input type={"submit"}></input>
+            <input type="submit" value="login"></input>
         </form>
     )
 }

@@ -23,6 +23,7 @@ function RegisterUser (name, email, password){
                 console.log(err);
             } else {
                 console.log("success!!");
+                alert("Successful register");
             }
         })
     });
@@ -37,30 +38,29 @@ function RegisterForm () {
         name = name.value;
         email = email.value;
         password = password.value;
-        console.log(name, email, password);
         event.preventDefault();
         RegisterUser(name, email, password);
         docForm.reset();
     }
 
     return (
-        <form onSubmit={handleSubmit} id="registerForm">
+        <form onSubmit={handleSubmit} id="registerForm" className="formClass">
             <label>
                 Name:<br/>
-                <input name="name" type="text" required />
             </label>
+            <input name="name" type="text" required />
             <br/>
             <label>
                 Email:<br/>
-                <input name="email" type="text" required />
             </label>
+            <input name="email" type="text" required />
             <br/>
             <label>
                 Password:<br/>
-                <input name="password" type="password" required />
             </label>
+            <input name="password" type="password" required />
             <br/>
-            <input type="submit"></input>
+            <input type="submit" value="register"></input>
         </form>
     );
 }

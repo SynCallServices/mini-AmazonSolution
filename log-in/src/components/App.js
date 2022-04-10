@@ -1,15 +1,15 @@
 // modules
-import { React, AWS } from "./modules.js";
+import { React, AWS, useState } from "./modules.js";
 
 // functions
-import { RegisterForm } from "./register.js";
-import { LoginForm } from "./login.js";
+import { Forms } from "./forms.js";
+
+import "../assets/styles/App.css";
 
 function App() {
   return (
     <div className="App">
-      <LoginForm />
-      <RegisterForm />
+      <Forms />
     </div>
   );
 }

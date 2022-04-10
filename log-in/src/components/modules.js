@@ -1,5 +1,6 @@
-import '../assets/styles/App.css';
+import styles from '../assets/styles/App.css';
 import React from "react";
+import { useState } from "react";
 import AWS from "aws-sdk";
 const AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 
@@ -27,5 +28,7 @@ export {
     AmazonCognitoIdentity,
     cognito,
     poolData,
-    userPool
+    userPool,
+    useState,
+    styles
 };
