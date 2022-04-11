@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { React, AWS } from "./modules.js";
+import { React, AWS, connect } from "./modules.js";
 const { AmazonCognitoIdentity, cognito, poolData, userPool } = require("./modules.js");
 
 function LoginUser(user, password) {
@@ -10,15 +10,40 @@ function LoginUser(user, password) {
 
     console.log(authenticationDetails);
 
-    var userData = {
+    const userData = {
         Username : user,
         Pool : userPool
     };
-    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    const cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
     cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
             console.log("entered success");
             alert("Successful login");
+            cognitoUser.getUserAttributes((err, res) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    const ConnectId = res.find((item) => item.Name == "custom:ConnectId").Value;
+                    connect.describeUser({
+                        InstanceId: process.env.REACT_APP_INSTANCE_ID,
+                        UserId: ConnectId
+                    }, function(err, data) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            const securityProfile = data.User.SecurityProfileIds[0];
+                            switch (securityProfile) {
+                                case process.env.REACT_APP_AGENT_ID:
+                                    alert("agent login");
+                                    break;
+                                case process.env.REACT_APP_SUPERVISOR_ID:
+                                    alert("supervisor login");
+                                    break;
+                            }
+                        }
+                    })
+                }
+            })
         },
         onFailure: function(err) {
             console.log(err);

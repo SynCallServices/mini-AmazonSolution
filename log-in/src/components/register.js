@@ -1,32 +1,56 @@
-import { React, AWS } from "./modules.js";
+import { React, AWS, connect } from "./modules.js";
 const { AmazonCognitoIdentity, cognito, poolData, userPool } = require("./modules.js");
 
-function RegisterUser (name, email, password){
-    let attributeList = [
-        new AmazonCognitoIdentity.CognitoUserAttribute({Name:"name",Value:name}),
-        new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value:email})
-    ];
-
-    userPool.signUp(name, password, attributeList, null, function(err, result){
+async function RegisterUser (name, email, password){
+    connect.createUser({
+        InstanceId: process.env.REACT_APP_INSTANCE_ID,
+        PhoneConfig: {
+            PhoneType: "SOFT_PHONE"
+        },
+        RoutingProfileId: process.env.REACT_APP_GENERAL_ROUTING_PROFILE_ID,
+        SecurityProfileIds: [
+            process.env.REACT_APP_AGENT_ID
+        ],
+        Username: name,
+        IdentityInfo: {
+            Email: email,
+            FirstName: "Test",
+            LastName: "User"
+        },
+        Password: password
+    }, function(err, data) {
         if (err) {
             console.log(err);
-            return;
-        }
+        } else {
+            console.log("user created", data.UserId);
+            let attributeList = [
+                new AmazonCognitoIdentity.CognitoUserAttribute({Name:"name",Value:name}),
+                new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value:email}),
+                new AmazonCognitoIdentity.CognitoUserAttribute({Name:"custom:ConnectId",Value:data.UserId}),
+            ];
 
-        cognito.adminSetUserPassword({
-        UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-        Username: name,
-        Password: password,
-        Permanent: true
-        }, function(err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("success!!");
-                alert("Successful register");
-            }
-        })
-    });
+            userPool.signUp(name, password, attributeList, null, function(err, result){
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+
+                cognito.adminSetUserPassword({
+                    UserPoolId: process.env.REACT_APP_USER_POOL_ID,
+                    Username: name,
+                    Password: password,
+                    Permanent: true
+                }, function(err) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("success!!");
+                        alert("Successful register");
+                    }
+                })
+            });
+        }
+    })
 }
 
 function RegisterForm () {

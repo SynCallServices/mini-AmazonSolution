@@ -22,11 +22,14 @@ const poolData = {
 
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
+const connect = new AWS.Connect();
+
 export {
     React,
     AWS,
     AmazonCognitoIdentity,
     cognito,
+    connect,
     poolData,
     userPool,
     useState,
