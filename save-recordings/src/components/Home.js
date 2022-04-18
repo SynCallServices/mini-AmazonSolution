@@ -14,6 +14,7 @@ function Home() {
   const [voiceRecordings, setVoiceRecordings] = useState([]);
 
   useEffect(() => {
+    buildDummyData()
     fetchVoiceRecordings()
   }, [
     /*This empty array represents the variables that useEffect hook is tracking. 
@@ -21,10 +22,16 @@ function Home() {
     ]
   )
 
-
-
-  function setInput(key, value) {
+  const setInput = (key, value) => {
     setState({...state, [key]:value})
+  }
+
+  async function buildDummyData() {
+    try{
+      await API.graphql(graphqlOperation(createVoiceRecordings, {input: {voice_id: '010', agent_id: '010', voice_path: 'videos/dummy.mp4'}}))
+    } catch (err) {
+      console.log("Error creating Voice recording: ", err)
+    }
   }
 
   async function fetchVoiceRecordings() {
@@ -32,10 +39,10 @@ function Home() {
       const voiceRecordingsData = await API.graphql(graphqlOperation(listVoiceRecordings))
       const voiceRecordings = voiceRecordingsData.data.listVoiceRecordings.items
       setVoiceRecordings(voiceRecordings)
-    } catch (err) {console.log('Error fetching Voice recordings.', err)}
+    } catch (err) {console.log('Error fetching Voice recordings.', err.errors[0])}
   }
 
-  async function addVoiceRecordings()
+  async function addVoiceRecordings() 
   {
     try{
       if (!state.voice_id || !state.agent_id || !state.voice_path) return
@@ -66,8 +73,8 @@ function Home() {
         value={state.voice_path}
         placeholder="Voice Recording Path"
       />
-      <button onClick={addVoiceRecordings}>Create Voice Recording entry</button>
-      <button onClick={fetchVoiceRecordings}>Get Voice Recordings</button>
+      <Button onClick={addVoiceRecordings} text="Create Voice Recording entry" color="#6B9080"/>
+      <Button onClick={fetchVoiceRecordings} text="Get Voice Recordings" color="#6B9080"/>
       {
         voiceRecordings.map((voiceRecording, index) => (
           <div key={voiceRecording.id ? voiceRecording.id : index} className='voiceRecording'>

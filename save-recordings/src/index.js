@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/styles/index.css';
 // import App from './components/App';
+// import VideoUploader from './components/VideoUploader';
 import Home from './components/Home'
 import reportWebVitals from './reportWebVitals';
 
