@@ -1,7 +1,7 @@
 import { React, AWS, connect } from "./modules.js";
 const { AmazonCognitoIdentity, cognito, poolData, userPool } = require("./modules.js");
 
-async function RegisterUser (name, email, password){
+async function RegisterUser (userName, firstName, lastName, email, password){
     connect.createUser({
         InstanceId: process.env.REACT_APP_INSTANCE_ID,
         PhoneConfig: {
@@ -11,25 +11,25 @@ async function RegisterUser (name, email, password){
         SecurityProfileIds: [
             process.env.REACT_APP_AGENT_ID
         ],
-        Username: name,
+        Username: userName,
         IdentityInfo: {
             Email: email,
-            FirstName: "Test",
-            LastName: "User"
+            FirstName: firstName,
+            LastName: lastName
         },
         Password: password
     }, function(err, data) {
         if (err) {
             console.log(err);
         } else {
-            console.log("user created", data.UserId);
+            alert("User created");
             let attributeList = [
-                new AmazonCognitoIdentity.CognitoUserAttribute({Name:"name",Value:name}),
+                new AmazonCognitoIdentity.CognitoUserAttribute({Name:"name",Value:userName}),
                 new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value:email}),
                 new AmazonCognitoIdentity.CognitoUserAttribute({Name:"custom:ConnectId",Value:data.UserId}),
             ];
 
-            userPool.signUp(name, password, attributeList, null, function(err, result){
+            userPool.signUp(userName, password, attributeList, null, function(err, result){
                 if (err) {
                     console.log(err);
                     return;
@@ -37,14 +37,13 @@ async function RegisterUser (name, email, password){
 
                 cognito.adminSetUserPassword({
                     UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-                    Username: name,
+                    Username: userName,
                     Password: password,
                     Permanent: true
                 }, function(err) {
                     if (err) {
                         console.log(err);
                     } else {
-                        console.log("success!!");
                         alert("Successful register");
                     }
                 })
@@ -56,23 +55,34 @@ async function RegisterUser (name, email, password){
 function RegisterForm () {
     function handleSubmit (event) {
         alert("Credentials entered");
-        console.log(document.forms[0]);
         const docForm = document.getElementById("registerForm");
-        let { name, email, password } = docForm;
-        name = name.value;
+        let { userName, firstName, lastName, email, password } = docForm;
+        userName = userName.value;
+        firstName = firstName.value;
+        lastName= lastName.value;
         email = email.value;
         password = password.value;
         event.preventDefault();
-        RegisterUser(name, email, password);
+        RegisterUser(userName, firstName, lastName, email, password);
         docForm.reset();
     }
 
     return (
         <form onSubmit={handleSubmit} id="registerForm" className="formClass">
             <label>
-                Name:<br/>
+                Username:<br/>
             </label>
-            <input name="name" type="text" required />
+            <input name="userName" type="text" required />
+            <br/>
+            <label>
+                First Name:<br/>
+            </label>
+            <input name="firstName" type="text" required />
+            <br/>
+            <label>
+                Last Name:<br/>
+            </label>
+            <input name="lastName" type="text" required />
             <br/>
             <label>
                 Email:<br/>

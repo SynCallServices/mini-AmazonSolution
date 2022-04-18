@@ -8,16 +8,14 @@ function LoginUser(user, password) {
         Password : password,
     });
 
-    console.log(authenticationDetails);
-
     const userData = {
         Username : user,
         Pool : userPool
     };
+
     const cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
     cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
-            console.log("entered success");
             alert("Successful login");
             cognitoUser.getUserAttributes((err, res) => {
                 if (err) {
@@ -34,10 +32,10 @@ function LoginUser(user, password) {
                             const securityProfile = data.User.SecurityProfileIds[0];
                             switch (securityProfile) {
                                 case process.env.REACT_APP_AGENT_ID:
-                                    alert("agent login");
+                                    alert("Agent login");
                                     break;
                                 case process.env.REACT_APP_SUPERVISOR_ID:
-                                    alert("supervisor login");
+                                    alert("Supervisor login");
                                     break;
                             }
                         }
@@ -49,36 +47,36 @@ function LoginUser(user, password) {
             console.log(err);
         },
         mfaRequired: function() {
-        console.log("code required");
+            console.log("code required");
         },
         newPasswordRequired: function() {
-        console.log("password required");
-        cognito.adminSetUserPassword({
-            UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-            Username: user,
-            Password: password,
-            Permanent: true
-        }, function(err) {
-            if (err) {
-            console.log(err);
-            } else {
-            console.log("success!!");
-            }
-        })
+            console.log("password required");
+            cognito.adminSetUserPassword({
+                UserPoolId: process.env.REACT_APP_USER_POOL_ID,
+                Username: user,
+                Password: password,
+                Permanent: true
+            }, function(err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("success!!");
+                }
+            })
         }
     });
 }
 
 function LoginForm () {
     function handleSubmit (event) {
-    alert("Credentials entered");
-    console.log(document.forms[0]);
-    let { name, password } = document.forms[0];
-    name = name.value;
-    password = password.value;
-    event.preventDefault();
-    LoginUser(name, password);
-    document.getElementById("loginForm").reset();
+        alert("Credentials entered");
+        const docForm = document.getElementById("loginForm");
+        let { name, password } = docForm;
+        name = name.value;
+        password = password.value;
+        event.preventDefault();
+        LoginUser(name, password);
+        docForm.reset();
     }
 
     return (
