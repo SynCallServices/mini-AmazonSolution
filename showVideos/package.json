@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "react-photo-feed": "^1.0.13"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.0.23"
-  }
-}
