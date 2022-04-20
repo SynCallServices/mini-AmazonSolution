@@ -10,6 +10,14 @@
       "StackName": "amplify-saverecordings-dev-154306",
       "StackId": "arn:aws:cloudformation:us-east-1:688487247453:stack/amplify-saverecordings-dev-154306/7b4ee110-c0ea-11ec-b292-12d98f7d7ee3",
       "AmplifyAppId": "d1jz4zaoh88l1k"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1jz4zaoh88l1k",
+          "type": "manual"
+        }
+      }
     }
   }
 }
