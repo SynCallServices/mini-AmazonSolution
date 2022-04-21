@@ -7,7 +7,7 @@ import Recorder from './Components/Recorder/Recorder';
 function App() {
   return (
     <div>
-      <Recorder />
+      <h1>Hi</h1>
     </div>
   );
 }
