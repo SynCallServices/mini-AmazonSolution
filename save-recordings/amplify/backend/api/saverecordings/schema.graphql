@@ -15,3 +15,8 @@ type VoiceRecordings @model {
   voiceId: String!
   voicePath: String!
 }
+
+type Agents @model {
+  id: ID!
+  videos: [VideoRecordings]! 
+}

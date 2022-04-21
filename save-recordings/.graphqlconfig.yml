@@ -11,7 +11,7 @@ projects:
         generatedFileName: ''
         docsFilePath: src/graphql
   saverecordings:
-    schemaPath: src/graphql/schema.json
+    schemaPath: amplify/backend/api/saverecordings/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
