@@ -1,42 +1,34 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateVoiceRecordings = /* GraphQL */ `
-  subscription OnCreateVoiceRecordings {
-    onCreateVoiceRecordings {
-      voice_id
-      agent_id
-      voice_path
-      description
+export const getVideoRecordings = /* GraphQL */ `
+  query GetVideoRecordings($id: ID!) {
+    getVideoRecordings(id: $id) {
       id
+      agentId
+      videoId
+      videoPath
       createdAt
       updatedAt
     }
   }
 `;
-export const onUpdateVoiceRecordings = /* GraphQL */ `
-  subscription OnUpdateVoiceRecordings {
-    onUpdateVoiceRecordings {
-      voice_id
-      agent_id
-      voice_path
-      description
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteVoiceRecordings = /* GraphQL */ `
-  subscription OnDeleteVoiceRecordings {
-    onDeleteVoiceRecordings {
-      voice_id
-      agent_id
-      voice_path
-      description
-      id
-      createdAt
-      updatedAt
+export const listVideoRecordings = /* GraphQL */ `
+  query ListVideoRecordings(
+    $filter: ModelVideoRecordingsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listVideoRecordings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        agentId
+        videoId
+        videoPath
+        createdAt
+        updatedAt
+      }
+      nextToken
     }
   }
 `;

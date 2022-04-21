@@ -1,7 +1,6 @@
 {
-  "auth": {},
   "api": {
-    "saveRecordingsGraphAPI": {
+    "saverecordings": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -9,12 +8,21 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
+              "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2023-04-20T21:32:38.557Z",
+              "description": "save_recordings_api"
             }
           },
           "additionalAuthenticationProviders": []
         }
       }
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual"
     }
   }
 }

@@ -4,21 +4,21 @@ import Button from './Button'
 import { useEffect, useState } from 'react';
 
 import { API, graphqlOperation } from 'aws-amplify';
-import { createVoiceRecordings } from '../graphql/mutations';
-import { listVoiceRecordings } from '../graphql/queries';
+import { createVideoRecordings } from '../graphql/mutations';
+import { listVideoRecordings } from '../graphql/queries';
 
-const initialState = { voice_id: '', agent_id: '', voice_path: ''}
+const initialState = { videoId: '', agentId: '', videoPath: ''}
 
 function Home() {
   const [state, setState] = useState(initialState);
-  const [voiceRecordings, setVoiceRecordings] = useState([]);
+  const [videoRecordings, setVideoRecordings] = useState([]);
 
   useEffect(() => {
     buildDummyData()
-    fetchVoiceRecordings()
+    fetchVideoRecordings()
   }, [
     /*This empty array represents the variables that useEffect hook is tracking. 
-    Everytime that one of the variables is updated fetchVoiceRecordings() will be called.*/
+    Everytime that one of the variables is updated fetchVideoRecordings() will be called.*/
     ]
   )
 
@@ -28,59 +28,59 @@ function Home() {
 
   async function buildDummyData() {
     try{
-      await API.graphql(graphqlOperation(createVoiceRecordings, {input: {voice_id: '010', agent_id: '010', voice_path: 'videos/dummy.mp4'}}))
+      await API.graphql(graphqlOperation(createVideoRecordings, {input: {videoId: '010', agentId: '010', videoPath: 'videos/dummy.mp4'}}))
     } catch (err) {
-      console.log("Error creating Voice recording: ", err)
+      console.log("Error creating Video recording: ", err)
     }
   }
 
-  async function fetchVoiceRecordings() {
+  async function fetchVideoRecordings() {
     try {
-      const voiceRecordingsData = await API.graphql(graphqlOperation(listVoiceRecordings))
-      const voiceRecordings = voiceRecordingsData.data.listVoiceRecordings.items
-      setVoiceRecordings(voiceRecordings)
-    } catch (err) {console.log('Error fetching Voice recordings.', err.errors[0])}
+      const videoRecordingsData = await API.graphql(graphqlOperation(listVideoRecordings))
+      const videoRecordings = videoRecordingsData.data.listVideoRecordings.items
+      setVideoRecordings(videoRecordings)
+    } catch (err) {console.log('Error fetching Video recordings.', err.errors[0])}
   }
 
-  async function addVoiceRecordings() 
+  async function addVideoRecordings() 
   {
     try{
-      if (!state.voice_id || !state.agent_id || !state.voice_path) return
-      const voiceRecording = { ...state }
-      setVoiceRecordings([...voiceRecordings, voiceRecording])
+      if (!state.videoId || !state.agentId || !state.videoPath) return
+      const videoRecording = { ...state }
+      setVideoRecordings([...videoRecordings, videoRecording])
       setState(initialState)
-      await API.graphql(graphqlOperation(createVoiceRecordings, {input: voiceRecording}))
+      await API.graphql(graphqlOperation(createVideoRecordings, {input: videoRecording}))
     } catch (err) {
-      console.log("Error creating Voice recording: ", err)
+      console.log("Error creating Video recording: ", err)
     }
   }
 
   return (
     <div className='container'>
-      <h2>Voice Recordings</h2>
+      <h2>Video Recordings</h2>
       <input
-        onChange={event => setInput('voice_id', event.target.value)}
-        value={state.voice_id}
-        placeholder="Voice Recording Id"
+        onChange={event => setInput('videoId', event.target.value)}
+        value={state.videoId}
+        placeholder="Video Recording Id"
       />
       <input
-        onChange={event => setInput('agent_id', event.target.value)}
-        value={state.agent_id}
+        onChange={event => setInput('agentId', event.target.value)}
+        value={state.agentId}
         placeholder="Agent Id"
       />
       <input
-        onChange={event => setInput('voice_path', event.target.value)}
-        value={state.voice_path}
-        placeholder="Voice Recording Path"
+        onChange={event => setInput('videoPath', event.target.value)}
+        value={state.videoPath}
+        placeholder="Video Recording Path"
       />
-      <Button onClick={addVoiceRecordings} text="Create Voice Recording entry" color="#6B9080"/>
-      <Button onClick={fetchVoiceRecordings} text="Get Voice Recordings" color="#6B9080"/>
+      <Button onClick={addVideoRecordings} text="Create Video Recording entry" color="#6B9080"/>
+      <Button onClick={fetchVideoRecordings} text="Get Video Recordings" color="#6B9080"/>
       {
-        voiceRecordings.map((voiceRecording, index) => (
-          <div key={voiceRecording.id ? voiceRecording.id : index} className='voiceRecording'>
-            <p className='voiceRecordingVoiceId'>Voice Recording ID: {voiceRecording.voice_id}</p>
-            <p className='voiceRecordingVoiceId'>Agent ID: {voiceRecording.agent_id}</p> 
-            <p className='voiceRecordingVoiceId'>Voice Path: {voiceRecording.voice_path}</p> 
+        videoRecordings.map((videoRecording, index) => (
+          <div key={videoRecording.id ? videoRecording.id : index} className='videoRecording'>
+            <p className='videoRecordingVideoId'>Video Recording ID: {videoRecording.videoId}</p>
+            <p className='videoRecordingVideoId'>Agent ID: {videoRecording.agentId}</p> 
+            <p className='videoRecordingVideoId'>Video Path: {videoRecording.videoPath}</p> 
           </div>
         ))
       }
