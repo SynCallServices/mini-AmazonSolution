@@ -1,9 +1,13 @@
 import React from 'react';
 
-function App(){
-  return(
+// Components
+import Recorder from './Components/Recorder/Recorder';
+
+
+function App() {
+  return (
     <div>
-      <Recorder/>
+      <Recorder />
     </div>
   );
 }
