@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "imperiodexime",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Volumes/xime/TEC/6° semestre/mini-AmazonSolution/imperio_de_xime/amplify/backend/api/imperiodexime/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-04-21T00:25:41.668Z",
+      "keyDescription": "XimeKey"
+    }
+  }
+}
