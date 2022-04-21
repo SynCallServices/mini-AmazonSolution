@@ -8,3 +8,10 @@ type VideoRecordings @model {
   videoId: String!
   videoPath: String!
 }
+
+type VoiceRecordings @model {
+  id: ID!
+  agentId: String!
+  voiceId: String!
+  voicePath: String!
+}
