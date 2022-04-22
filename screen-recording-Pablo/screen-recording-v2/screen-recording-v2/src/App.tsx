@@ -1,8 +1,15 @@
 import React from 'react';
 
+import { AppHeader, MainRecorder } from '@UI';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from './theme';
+
 function App() {
   return (
-    <h1>Hi</h1>
+    <ChakraProvider theme={theme}>
+      <AppHeader/>
+      <MainRecorder/>
+    </ChakraProvider>
   );
 }
 
