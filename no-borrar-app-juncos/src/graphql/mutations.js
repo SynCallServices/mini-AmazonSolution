@@ -1,12 +1,12 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createVideoRecordings = /* GraphQL */ `
-  mutation CreateVideoRecordings(
-    $input: CreateVideoRecordingsInput!
-    $condition: ModelVideoRecordingsConditionInput
+export const createVideo = /* GraphQL */ `
+  mutation CreateVideo(
+    $input: CreateVideoInput!
+    $condition: ModelVideoConditionInput
   ) {
-    createVideoRecordings(input: $input, condition: $condition) {
+    createVideo(input: $input, condition: $condition) {
       id
       agentId
       videoId
@@ -16,12 +16,12 @@ export const createVideoRecordings = /* GraphQL */ `
     }
   }
 `;
-export const updateVideoRecordings = /* GraphQL */ `
-  mutation UpdateVideoRecordings(
-    $input: UpdateVideoRecordingsInput!
-    $condition: ModelVideoRecordingsConditionInput
+export const updateVideo = /* GraphQL */ `
+  mutation UpdateVideo(
+    $input: UpdateVideoInput!
+    $condition: ModelVideoConditionInput
   ) {
-    updateVideoRecordings(input: $input, condition: $condition) {
+    updateVideo(input: $input, condition: $condition) {
       id
       agentId
       videoId
@@ -31,12 +31,12 @@ export const updateVideoRecordings = /* GraphQL */ `
     }
   }
 `;
-export const deleteVideoRecordings = /* GraphQL */ `
-  mutation DeleteVideoRecordings(
-    $input: DeleteVideoRecordingsInput!
-    $condition: ModelVideoRecordingsConditionInput
+export const deleteVideo = /* GraphQL */ `
+  mutation DeleteVideo(
+    $input: DeleteVideoInput!
+    $condition: ModelVideoConditionInput
   ) {
-    deleteVideoRecordings(input: $input, condition: $condition) {
+    deleteVideo(input: $input, condition: $condition) {
       id
       agentId
       videoId

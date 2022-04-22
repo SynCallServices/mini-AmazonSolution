@@ -1,9 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateVideoRecordings = /* GraphQL */ `
-  subscription OnCreateVideoRecordings {
-    onCreateVideoRecordings {
+export const onCreateVideo = /* GraphQL */ `
+  subscription OnCreateVideo {
+    onCreateVideo {
       id
       agentId
       videoId
@@ -13,9 +13,9 @@ export const onCreateVideoRecordings = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateVideoRecordings = /* GraphQL */ `
-  subscription OnUpdateVideoRecordings {
-    onUpdateVideoRecordings {
+export const onUpdateVideo = /* GraphQL */ `
+  subscription OnUpdateVideo {
+    onUpdateVideo {
       id
       agentId
       videoId
@@ -25,9 +25,9 @@ export const onUpdateVideoRecordings = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteVideoRecordings = /* GraphQL */ `
-  subscription OnDeleteVideoRecordings {
-    onDeleteVideoRecordings {
+export const onDeleteVideo = /* GraphQL */ `
+  subscription OnDeleteVideo {
+    onDeleteVideo {
       id
       agentId
       videoId

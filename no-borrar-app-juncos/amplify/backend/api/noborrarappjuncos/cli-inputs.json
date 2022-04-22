@@ -7,8 +7,10 @@
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 365,
-      "apiKeyExpirationDate": "2023-04-20T22:28:12.098Z",
-      "keyDescription": "JuncosAPIKey"
-    }
+      "apiKeyExpirationDate": "2023-04-22T20:34:35.622Z",
+      "keyDescription": "JunquiKey"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }

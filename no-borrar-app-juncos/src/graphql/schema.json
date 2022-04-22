@@ -15,7 +15,7 @@
         "name" : "Query",
         "description" : null,
         "fields" : [ {
-          "name" : "getVideoRecordings",
+          "name" : "getVideo",
           "description" : null,
           "args" : [ {
             "name" : "id",
@@ -33,20 +33,20 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "VideoRecordings",
+            "name" : "Video",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "listVideoRecordings",
+          "name" : "listVideos",
           "description" : null,
           "args" : [ {
             "name" : "filter",
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelVideoRecordingsFilterInput",
+              "name" : "ModelVideoFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
@@ -71,7 +71,7 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "ModelVideoRecordingsConnection",
+            "name" : "ModelVideoConnection",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -83,7 +83,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "VideoRecordings",
+        "name" : "Video",
         "description" : null,
         "fields" : [ {
           "name" : "id",
@@ -209,7 +209,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "ModelVideoRecordingsConnection",
+        "name" : "ModelVideoConnection",
         "description" : null,
         "fields" : [ {
           "name" : "items",
@@ -223,7 +223,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "OBJECT",
-                "name" : "VideoRecordings",
+                "name" : "Video",
                 "ofType" : null
               }
             }
@@ -248,7 +248,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelVideoRecordingsFilterInput",
+        "name" : "ModelVideoFilterInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -295,7 +295,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelVideoRecordingsFilterInput",
+              "name" : "ModelVideoFilterInput",
               "ofType" : null
             }
           },
@@ -308,7 +308,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelVideoRecordingsFilterInput",
+              "name" : "ModelVideoFilterInput",
               "ofType" : null
             }
           },
@@ -318,7 +318,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelVideoRecordingsFilterInput",
+            "name" : "ModelVideoFilterInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -744,7 +744,7 @@
         "name" : "Mutation",
         "description" : null,
         "fields" : [ {
-          "name" : "createVideoRecordings",
+          "name" : "createVideo",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -754,7 +754,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "CreateVideoRecordingsInput",
+                "name" : "CreateVideoInput",
                 "ofType" : null
               }
             },
@@ -764,20 +764,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelVideoRecordingsConditionInput",
+              "name" : "ModelVideoConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "VideoRecordings",
+            "name" : "Video",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "updateVideoRecordings",
+          "name" : "updateVideo",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -787,7 +787,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "UpdateVideoRecordingsInput",
+                "name" : "UpdateVideoInput",
                 "ofType" : null
               }
             },
@@ -797,20 +797,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelVideoRecordingsConditionInput",
+              "name" : "ModelVideoConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "VideoRecordings",
+            "name" : "Video",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "deleteVideoRecordings",
+          "name" : "deleteVideo",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -820,7 +820,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "DeleteVideoRecordingsInput",
+                "name" : "DeleteVideoInput",
                 "ofType" : null
               }
             },
@@ -830,14 +830,14 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelVideoRecordingsConditionInput",
+              "name" : "ModelVideoConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "VideoRecordings",
+            "name" : "Video",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -849,7 +849,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "CreateVideoRecordingsInput",
+        "name" : "CreateVideoInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -906,7 +906,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelVideoRecordingsConditionInput",
+        "name" : "ModelVideoConditionInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -944,7 +944,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelVideoRecordingsConditionInput",
+              "name" : "ModelVideoConditionInput",
               "ofType" : null
             }
           },
@@ -957,7 +957,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelVideoRecordingsConditionInput",
+              "name" : "ModelVideoConditionInput",
               "ofType" : null
             }
           },
@@ -967,7 +967,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelVideoRecordingsConditionInput",
+            "name" : "ModelVideoConditionInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -977,7 +977,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "UpdateVideoRecordingsInput",
+        "name" : "UpdateVideoInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -1026,7 +1026,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "DeleteVideoRecordingsInput",
+        "name" : "DeleteVideoInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -1051,34 +1051,34 @@
         "name" : "Subscription",
         "description" : null,
         "fields" : [ {
-          "name" : "onCreateVideoRecordings",
+          "name" : "onCreateVideo",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "VideoRecordings",
+            "name" : "Video",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onUpdateVideoRecordings",
+          "name" : "onUpdateVideo",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "VideoRecordings",
+            "name" : "Video",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onDeleteVideoRecordings",
+          "name" : "onDeleteVideo",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "VideoRecordings",
+            "name" : "Video",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -1086,6 +1086,51 @@
         } ],
         "inputFields" : null,
         "interfaces" : [ ],
+        "enumValues" : null,
+        "possibleTypes" : null
+      }, {
+        "kind" : "INPUT_OBJECT",
+        "name" : "ModelBooleanInput",
+        "description" : null,
+        "fields" : null,
+        "inputFields" : [ {
+          "name" : "ne",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Boolean",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "eq",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Boolean",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "attributeExists",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Boolean",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "attributeType",
+          "description" : null,
+          "type" : {
+            "kind" : "ENUM",
+            "name" : "ModelAttributeTypes",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        } ],
+        "interfaces" : null,
         "enumValues" : null,
         "possibleTypes" : null
       }, {
@@ -1188,51 +1233,6 @@
         "description" : "Built-in Float",
         "fields" : null,
         "inputFields" : null,
-        "interfaces" : null,
-        "enumValues" : null,
-        "possibleTypes" : null
-      }, {
-        "kind" : "INPUT_OBJECT",
-        "name" : "ModelBooleanInput",
-        "description" : null,
-        "fields" : null,
-        "inputFields" : [ {
-          "name" : "ne",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "eq",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "attributeExists",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "attributeType",
-          "description" : null,
-          "type" : {
-            "kind" : "ENUM",
-            "name" : "ModelAttributeTypes",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        } ],
         "interfaces" : null,
         "enumValues" : null,
         "possibleTypes" : null

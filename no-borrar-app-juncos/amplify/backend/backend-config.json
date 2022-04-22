@@ -10,8 +10,8 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2023-04-20T22:28:12.098Z",
-              "description": "JuncosAPIKey"
+              "apiKeyExpirationDate": "2023-04-22T20:34:35.622Z",
+              "description": "JunquiKey"
             }
           },
           "additionalAuthenticationProviders": []
