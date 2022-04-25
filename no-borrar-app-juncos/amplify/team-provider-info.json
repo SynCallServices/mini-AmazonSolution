@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "noborrarappjuncos60a97b91": {}
+      },
+      "function": {
+        "S3Triggerf2fa0f4f": {
+          "deploymentBucketName": "amplify-noborrarappjuncos-dev-170326-deployment",
+          "s3Key": "amplify-builds/S3Triggerf2fa0f4f-387252775434682b392f-build.zip"
+        }
       }
     }
   }

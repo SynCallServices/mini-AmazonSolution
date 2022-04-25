@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3b8f538ba",
+  "policyUUID": "b8f538ba",
+  "bucketName": "noborrarappjuncos3cb58872bc66422bbe61cfb8b08587",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Triggerf2fa0f4f",
+  "groupAccess": {}
+}
