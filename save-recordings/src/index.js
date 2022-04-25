@@ -14,7 +14,7 @@ Amplify.configure(awsConfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <DeleteRecording />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );
