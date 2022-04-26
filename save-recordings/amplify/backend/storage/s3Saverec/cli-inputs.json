@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3Saverec",
+  "policyUUID": "1923111e",
+  "bucketName": "saverecordingsmatt",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
