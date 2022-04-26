@@ -3,20 +3,18 @@
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
 type VideoRecordings @model {
-  id: ID!
   agentId: String!
-  videoId: String!
+  videoId: ID!
   videoPath: String!
 }
 
 type VoiceRecordings @model {
-  id: ID!
   agentId: String!
-  voiceId: String!
+  voiceId: ID!
   voicePath: String!
 }
 
 type Agents @model {
-  id: ID!
+  agentid: ID!
   videos: [VideoRecordings]! 
 }

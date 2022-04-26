@@ -7,8 +7,10 @@
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 365,
-      "apiKeyExpirationDate": "2023-04-20T21:32:38.557Z",
+      "apiKeyExpirationDate": "2023-04-22T21:05:25.781Z",
       "keyDescription": "save_recordings_api"
-    }
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }
