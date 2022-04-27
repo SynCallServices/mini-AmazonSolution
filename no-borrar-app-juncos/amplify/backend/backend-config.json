@@ -1,6 +1,6 @@
 {
   "api": {
-    "noborrarappjuncos": {
+    "imperiodexime": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -10,8 +10,8 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2023-04-22T20:34:35.622Z",
-              "description": "JunquiKey"
+              "apiKeyExpirationDate": "2023-04-27T20:48:33.513Z",
+              "description": "XimeKey"
             }
           },
           "additionalAuthenticationProviders": []
@@ -20,7 +20,7 @@
     }
   },
   "auth": {
-    "noborrarappjuncos60a97b91": {
+    "imperiodexime0039dbb7": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -45,30 +45,6 @@
           "EMAIL"
         ]
       }
-    }
-  },
-  "function": {
-    "S3Triggerf2fa0f4f": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true
-    }
-  },
-  "storage": {
-    "s3b8f538ba": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "S3Triggerf2fa0f4f",
-          "attributes": [
-            "Name",
-            "Arn",
-            "LambdaExecutionRole"
-          ]
-        }
-      ]
     }
   }
 }

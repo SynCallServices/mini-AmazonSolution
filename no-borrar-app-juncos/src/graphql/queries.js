@@ -1,13 +1,13 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getVideo = /* GraphQL */ `
-  query GetVideo($id: ID!) {
-    getVideo(id: $id) {
+export const getVideos = /* GraphQL */ `
+  query GetVideos($id: ID!) {
+    getVideos(id: $id) {
       id
+      topic
+      description
       agentId
-      videoId
-      videoPath
       createdAt
       updatedAt
     }
@@ -15,16 +15,16 @@ export const getVideo = /* GraphQL */ `
 `;
 export const listVideos = /* GraphQL */ `
   query ListVideos(
-    $filter: ModelVideoFilterInput
+    $filter: ModelVideosFilterInput
     $limit: Int
     $nextToken: String
   ) {
     listVideos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        topic
+        description
         agentId
-        videoId
-        videoPath
         createdAt
         updatedAt
       }

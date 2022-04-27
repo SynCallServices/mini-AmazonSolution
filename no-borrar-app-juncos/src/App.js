@@ -5,7 +5,7 @@ import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
 
 // GraphQl
-import { createVideo, updateVideo, deleteVideo } from './graphql/mutations';
+import { createVideos, updateVideos, deleteVideos } from './graphql/mutations';
 import { listVideos } from './graphql/queries';
 
 // React 
@@ -16,7 +16,7 @@ Amplify.configure(awsconfig);
 
 function App({ signOut, user }) {
     // Empty video 
-    const video = { agentId: user.username, videoId: "", videoPath: "" };
+    const video = { topic: "", description: "", agentId: user.username };
     // Use the empty video for the states
     // Idk what states are tho 🥴
     const [state, setState] = useState(video);
@@ -38,12 +38,12 @@ function App({ signOut, user }) {
 
     async function addVideo() {
         try {
-            if (!state.videoId || !state.videoPath) return;
+            if (!state.topic || !state.description) return;
             const videoUpload = { ...state };
             setVideoRecordings([...videoRecordings, videoUpload]);
             setState(video);
             // Create a video 
-            await API.graphql(graphqlOperation(createVideo, { input: videoUpload }));
+            await API.graphql(graphqlOperation(createVideos, { input: videoUpload }));
         } catch (error) { console.log('Error creating video 🥴 ', error); }
     }
 
@@ -62,24 +62,24 @@ function App({ signOut, user }) {
 
             <h2>Your Videos</h2>
             <input
-                onChange={event => setInput('videoId', event.target.value)}
+                onChange={event => setInput('topic', event.target.value)}
                 value={state.videoId}
-                placeholder="Video Recording Id"
+                placeholder="Video topic"
             />
             <input
-                onChange={event => setInput('videoPath', event.target.value)}
+                onChange={event => setInput('description', event.target.value)}
                 value={state.videoPath}
-                placeholder="Video Recording Path"
+                placeholder="Video description Path"
             />
             <button onClick={addVideo}>Create Video Recording entry</button>
-            {/* <button onClick={fetchVideos}>Get Video Recordings</button> */}
+            <button onClick={fetchVideos}>Get Video Recordings</button>
 
             {
                 videoRecordings.map((video, index) => (
                     <div key={video.id ? video.id : index} className='videoRecording'>
-                        <p className='videoRecordingVideoId'>Video Recording ID: {video.videoId}</p>
+                        <p className='videoRecordingVideoId'>Video Recording ID: {video.topic}</p>
                         <p className='videoRecordingVideoId'>Agent ID: {video.agentId}</p>
-                        <p className='videoRecordingVideoId'>Video Path: {video.videoPath}</p>
+                        <p className='videoRecordingVideoId'>Video Path: {video.description}</p>
                     </div>
                 ))
             }

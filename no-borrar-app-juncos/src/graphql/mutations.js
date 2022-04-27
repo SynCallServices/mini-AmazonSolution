@@ -1,46 +1,46 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createVideo = /* GraphQL */ `
-  mutation CreateVideo(
-    $input: CreateVideoInput!
-    $condition: ModelVideoConditionInput
+export const createVideos = /* GraphQL */ `
+  mutation CreateVideos(
+    $input: CreateVideosInput!
+    $condition: ModelVideosConditionInput
   ) {
-    createVideo(input: $input, condition: $condition) {
+    createVideos(input: $input, condition: $condition) {
       id
+      topic
+      description
       agentId
-      videoId
-      videoPath
       createdAt
       updatedAt
     }
   }
 `;
-export const updateVideo = /* GraphQL */ `
-  mutation UpdateVideo(
-    $input: UpdateVideoInput!
-    $condition: ModelVideoConditionInput
+export const updateVideos = /* GraphQL */ `
+  mutation UpdateVideos(
+    $input: UpdateVideosInput!
+    $condition: ModelVideosConditionInput
   ) {
-    updateVideo(input: $input, condition: $condition) {
+    updateVideos(input: $input, condition: $condition) {
       id
+      topic
+      description
       agentId
-      videoId
-      videoPath
       createdAt
       updatedAt
     }
   }
 `;
-export const deleteVideo = /* GraphQL */ `
-  mutation DeleteVideo(
-    $input: DeleteVideoInput!
-    $condition: ModelVideoConditionInput
+export const deleteVideos = /* GraphQL */ `
+  mutation DeleteVideos(
+    $input: DeleteVideosInput!
+    $condition: ModelVideosConditionInput
   ) {
-    deleteVideo(input: $input, condition: $condition) {
+    deleteVideos(input: $input, condition: $condition) {
       id
+      topic
+      description
       agentId
-      videoId
-      videoPath
       createdAt
       updatedAt
     }
