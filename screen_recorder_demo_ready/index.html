@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Document</title>
+    </head>
+    <link rel="stylesheet" href="styles.css">
+    <body>
+        <div class="header">
+            <h1>Demo Screen Recorder</h1>
+        </div>
+
+        <video id="myVideo" width="900" height="500" controls></video>
+
+        <div id="buttonGDiv">
+            <div id="buttons">
+                <button class="btn" id="button2" onClick="start()">Click to begin!</button>
+                <button class="btn" id="button3">Click to stop!</button>
+                <button class="btn" id="button4">Click to pause/resume!</button>
+            </div>
+        </div>
+        
+        <script>
+
+            function pausee(rm) {
+                return rm.pause();
+            }
+
+            const start = async () => {
+                // stream is a MediaStream object.
+                const stream = await navigator.mediaDevices.getDisplayMedia({
+                    video: {
+                        mediaSource: "screen",
+                    },
+                });
+                const data = [];
+                
+                const mediaRecorder = new MediaRecorder(stream);
+
+                mediaRecorder.ondataavailable = (e) => {
+                    data.push(e.data);
+                };
+
+                //console.log(stream.active);
+                mediaRecorder.start(); // we need to start the recording.
+
+
+                //mediaRecorder.state = pausee(mediaRecorder);
+
+                //mediaRecorder.pause();
+                //mediaRecorder.resume();
+                //mediaRecorder.pause();
+
+                console.log(mediaRecorder.state);
+
+                // this works too line 47 to 60 //
+                /*mediaRecorder.onpause = function(e) {
+                    if (mediaRecorder.state === "recording") {
+                        mediaRecorder.pause();
+                        console.log("1");
+                        console.log(mediaRecorder.state);
+                        
+                    }
+                    else if (mediaRecorder.state === "paused") {
+                        mediaRecorder.resume();
+                        console.log("2");
+                        console.log(mediaRecorder.state);
+                    }
+                }*/
+
+                /*mediaRecorder.addEventListener('pause', function (e) {
+                    //pause.onclick = function() {
+                    mediaRecorder.onpause = function() {
+                        if (MediaRecorder.state === "recording") {
+                            mediaRecorder.pause();
+                        }
+                        else if (MediaRecorder.state === "paused") {
+                            mediaRecorder.resume();
+                        }
+                    }
+                });*/
+
+                // event listener to stop recording //
+                var btn3 = document.getElementById("button3");
+                btn3.addEventListener("click", () => {
+                    stream.getTracks().forEach( track => track.stop() ); // stop all tracks.
+                    //mediaRecorder.stop();
+                    //stream.active = false; this property is read only, cannot be directly affected.
+                    console.log(stream.active);
+                })
+
+
+                // event listener to pause and resume recording //
+                var btn4 = document.getElementById("button4");
+                btn4.addEventListener("click", () => {
+
+                    if (mediaRecorder.state === "recording") {
+                        //stream.getTracks().forEach( track => track.pause() ); // pause all tracks.
+                        mediaRecorder.pause();
+                        console.log("video paused");
+                        console.log(mediaRecorder.state);
+                    }
+                    else if (mediaRecorder.state === "paused") {
+                        // stream.getTracks().forEach( track => track.resume() ); // resume all tracks.
+                        mediaRecorder.resume();
+                        console.log("video resumed");
+                        console.log(mediaRecorder.state);
+                    }
+                })
+
+
+                // try somethig with pause;
+
+                // nnecesito un pause() antes
+                /*mediaRecorder.onpause = (e) => {
+                    console.log("se cacho la pausa")
+                    if (MediaRecorder.state === "recording") {
+                        mediaRecorder.pause();
+                    }
+                    else if (MediaRecorder.state === "paused") {
+                        mediaRecorder.resume();
+                    }
+                }*/
+
+                //mediaRecorder.stop();
+                
+                mediaRecorder.onstop = (e) => {
+                    console.log(stream.active);
+                    console.log(mediaRecorder.state);
+                    console.log("here");
+                    document.querySelector("video").src = URL.createObjectURL(
+                        new Blob(data, {
+                            type: data[0].type,
+                        })
+                    );
+                };
+            };
+
+            //start();
+        </script>
+    </body>
+</html>
