@@ -1,0 +1,33 @@
+.container{
+    width: 400px; 
+    margin: 0px auto; 
+    display: flex; 
+    flex-direction: column; 
+    padding: 20px;
+}
+
+.voiceRecording{
+    margin-bottom: 15px;
+}
+
+input{
+    border: none;
+    background-color: #F6FFF8;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 18px;
+    border-radius: 12px;
+}
+
+.voiceRecordingVoiceId {
+    font-size: 20;
+    font-weight: bold;
+}
+
+button{
+    background-color: black;
+    color: white;
+    outline: none;
+    font-size: 18;
+    padding: 12px 0px;
+}

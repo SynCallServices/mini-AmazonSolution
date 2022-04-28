@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/styles/index.css';
+import DeleteRecording from './components/DeleteRecording';
 // import App from './components/App';
 // import VideoUploader from './components/VideoUploader';
 import Home from './components/Home'
