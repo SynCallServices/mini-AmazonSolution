@@ -1,5 +1,5 @@
 // AWS
-import { Amplify, API, graphqlOperation } from 'aws-amplify';
+import { Amplify, API, graphqlOperation, Storage } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
@@ -9,7 +9,7 @@ import { createVideo, updateVideo, deleteVideo } from './graphql/mutations';
 import { listVideos } from './graphql/queries';
 
 // React 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 // Necessary amplify configuration
 Amplify.configure(awsconfig);
@@ -17,13 +17,18 @@ Amplify.configure(awsconfig);
 function App({ signOut, user }) {
     // Empty video 
     const video = { agentId: user.username, videoId: "", videoPath: "" };
+    const [s3File, setS3File] = useState();
+    const inputRef = useRef();
     // Use the empty video for the states
     // Idk what states are tho 🥴
     const [state, setState] = useState(video);
     const [videoRecordings, setVideoRecordings] = useState([]);
+    // This status will be used for a video player later in development
+    // const [videoPlaying, setVideoPlaying] = useState('');
 
     useEffect(() => { fetchVideos() }, []);
-    // Figure wtf is this -> but later pa, con calmish
+
+    // // Figure wtf is this -> but later pa, con calmish
     const setInput = (key, value) => { setState({ ...state, [key]: value }); }
 
     async function fetchVideos() {
@@ -45,6 +50,7 @@ function App({ signOut, user }) {
             // Create a video 
             await API.graphql(graphqlOperation(createVideo, { input: videoUpload }));
         } catch (error) { console.log('Error creating video 🥴 ', error); }
+        return window.location.reload();
     }
 
     // We'll use it later... I hope 
@@ -55,6 +61,15 @@ function App({ signOut, user }) {
     // await API.graphql(graphqlOperation(updateVideo, { input: { id: user.username, videoPath: "Updated todo info" } }));
     // Delete a todo
     // await API.graphql(graphqlOperation(deleteVideo, { input: { id: user.username } }));
+
+    async function uploadToS3(file) {
+        console.log(file);
+        try {
+            await Storage.put(file.name, file);
+            return true;
+        } catch (error) { console.log("Error uploading file: ", error); }
+        return false;
+    }
 
     return (
         <div className='App'>
@@ -71,25 +86,34 @@ function App({ signOut, user }) {
                 value={state.videoPath}
                 placeholder="Video Recording Path"
             />
-            <button onClick={addVideo}>Create Video Recording entry</button>
-            {/* <button onClick={fetchVideos}>Get Video Recordings</button> */}
+            <br />
+            <input id='fileButton' ref={inputRef} type="file"
+                onChange={(event) => { setS3File(event.target.files[0]); }}
+            />
+            <br /><br />
+            <button onClick={(event) => {
+                let uploadStatus = uploadToS3(s3File);
+                addVideo();
+                let fileSection = document.getElementById('fileButton');
+                fileSection.value = '';
+                if (uploadStatus)
+                    alert('Video has been uploaded successfully');
+            }}>Create Video Recording entry</button>
 
-            {
-                videoRecordings.map((video, index) => (
-                    <div key={video.id ? video.id : index} className='videoRecording'>
-                        <p className='videoRecordingVideoId'>Video Recording ID: {video.videoId}</p>
-                        <p className='videoRecordingVideoId'>Agent ID: {video.agentId}</p>
-                        <p className='videoRecordingVideoId'>Video Path: {video.videoPath}</p>
-                    </div>
-                ))
-            }
+            <ul>
+                {
+                    videoRecordings.map((video, index) => (
+                        <li key={video.id ? video.id : index} className='videoRecording'>
+                            <p className='videoRecordingVideoId'>Video Recording ID: {video.videoId}</p>
+                            <p className='videoRecordingVideoId'>Agent ID: {video.agentId}</p>
+                            <p className='videoRecordingVideoId'>Video Path: {video.videoPath}</p>
+                        </li>
+                    ))
+                }
+            </ul>
+
             <button onClick={signOut}>Sign out</button>
         </div>
-        // <>
-        //     <h1>Hello {user.username}</h1>
-        //     <button onClick={signOut}>Sign out</button>
-        // </>
-
     );
 }
 
