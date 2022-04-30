@@ -13,7 +13,7 @@ function DeleteRecording() {
     const [inputValue, setInputValue] = useState('');
 
     const setInput = (key, value) => {
-        setState({ ...state, [key]: value });
+        setState(prevState => ({...prevState, [key]: value }));
     };
 
     async function deleteVideoRecording() {
