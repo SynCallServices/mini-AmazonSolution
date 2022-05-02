@@ -21,6 +21,7 @@ function App({ signOut, user }) {
     // Idk what states are tho 🥴
     const [state, setState] = useState(video);
     const [videoRecordings, setVideoRecordings] = useState([]);
+    let file = "";
 
     useEffect(() => { fetchVideos() }, []);
     // Figure wtf is this -> but later pa, con calmish
@@ -36,42 +37,44 @@ function App({ signOut, user }) {
         } catch (error) { console.log('Error fetching Videos 🥴', error.errors[0]); }
     }
 
-    async function addVideo(e) {
-        try {
-            if (!state.topic || !state.description) return;
-            const videoUpload = { ...state };
-            setVideoRecordings([...videoRecordings, videoUpload]);
-            setState(video);
-            // Create a video 
-            await API.graphql(graphqlOperation(createVideos, { input: videoUpload }));
-        } catch (error) { console.log('Error creating video 🥴 ', error); }
-        const file = e.target.files[0];
-        try {
-            await Storage.put(file.name, file);
-        } catch (error) {
-            console.log("Error uploading file: ", error);
-        }
-    }
-
-    /*async function addVideo() {
-        try {
-            if (!state.topic || !state.description) return;
-            const videoUpload = { ...state };
-            setVideoRecordings([...videoRecordings, videoUpload]);
-            setState(video);
-            // Create a video 
-            await API.graphql(graphqlOperation(createVideos, { input: videoUpload }));
-        } catch (error) { console.log('Error creating video 🥴 ', error); }
-    }
-
     async function onChange(e) {
-        const file = e.target.files[0];
+        file = e.target.files[0];
+    }
+
+    async function UploadInfo() {
         try {
+            if (!state.topic || !state.description) return;
+            const videoUpload = { ...state };
+            setVideoRecordings([...videoRecordings, videoUpload]);
+            setState(video);
             await Storage.put(file.name, file);
+            await API.graphql(graphqlOperation(createVideos, { input: videoUpload }));
         } catch (error) {
-            console.log("Error uploading file: ", error);
+            console.log('Error uploading 🤦‍♀️ ', error);
         }
-    }*/
+    }
+
+
+
+    // async function addVideo() {
+    //     try {
+    //         if (!state.topic || !state.description) return;
+    //         const videoUpload = { ...state };
+    //         setVideoRecordings([...videoRecordings, videoUpload]);
+    //         setState(video);
+    //         // Create a video 
+    //         await API.graphql(graphqlOperation(createVideos, { input: videoUpload }));
+    //     } catch (error) { console.log('Error creating video 🥴 ', error); }
+    // }
+
+    // async function onChange(e) {
+    //     const file = e.target.files[0];
+    //     try {
+    //         await Storage.put(file.name, file);
+    //     } catch (error) {
+    //         console.log("Error uploading file: ", error);
+    //     }
+    // }
 
     // We'll use it later... I hope 
     // CRUD without the R -> CUD
@@ -97,10 +100,11 @@ function App({ signOut, user }) {
                 value={state.videoPath}
                 placeholder="Video description Path"
             />
-            <button onClick={addVideo}>Create Video Recording entry</button>
+            {/* <button onClick={addVideo}>Create Video Recording entry</button> */}
+            <button onClick={UploadInfo}>Create Video Recording entry</button>
             <button onClick={fetchVideos}>Get Video Recordings</button>
-            {/* <input type="file" onChange={onChange} />; */}
-            <input type="file" addVideo={addVideo} />;
+            <input type="file" onChange={onChange} />;
+            {/* <input type="file" onChange={UploadInfo} />; */}
             {
                 videoRecordings.map((video, index) => (
                     <div key={video.id ? video.id : index} className='videoRecording'>
