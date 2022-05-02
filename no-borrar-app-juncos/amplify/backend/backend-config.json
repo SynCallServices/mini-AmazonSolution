@@ -46,5 +46,12 @@
         ]
       }
     }
+  },
+  "storage": {
+    "imperiodexime": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

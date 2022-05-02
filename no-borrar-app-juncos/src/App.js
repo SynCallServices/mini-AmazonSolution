@@ -1,5 +1,5 @@
 // AWS
-import { Amplify, API, graphqlOperation } from 'aws-amplify';
+import { Amplify, API, graphqlOperation, Storage } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
@@ -36,7 +36,24 @@ function App({ signOut, user }) {
         } catch (error) { console.log('Error fetching Videos 🥴', error.errors[0]); }
     }
 
-    async function addVideo() {
+    async function addVideo(e) {
+        try {
+            if (!state.topic || !state.description) return;
+            const videoUpload = { ...state };
+            setVideoRecordings([...videoRecordings, videoUpload]);
+            setState(video);
+            // Create a video 
+            await API.graphql(graphqlOperation(createVideos, { input: videoUpload }));
+        } catch (error) { console.log('Error creating video 🥴 ', error); }
+        const file = e.target.files[0];
+        try {
+            await Storage.put(file.name, file);
+        } catch (error) {
+            console.log("Error uploading file: ", error);
+        }
+    }
+
+    /*async function addVideo() {
         try {
             if (!state.topic || !state.description) return;
             const videoUpload = { ...state };
@@ -46,6 +63,15 @@ function App({ signOut, user }) {
             await API.graphql(graphqlOperation(createVideos, { input: videoUpload }));
         } catch (error) { console.log('Error creating video 🥴 ', error); }
     }
+
+    async function onChange(e) {
+        const file = e.target.files[0];
+        try {
+            await Storage.put(file.name, file);
+        } catch (error) {
+            console.log("Error uploading file: ", error);
+        }
+    }*/
 
     // We'll use it later... I hope 
     // CRUD without the R -> CUD
@@ -73,7 +99,8 @@ function App({ signOut, user }) {
             />
             <button onClick={addVideo}>Create Video Recording entry</button>
             <button onClick={fetchVideos}>Get Video Recordings</button>
-
+            {/* <input type="file" onChange={onChange} />; */}
+            <input type="file" addVideo={addVideo} />;
             {
                 videoRecordings.map((video, index) => (
                     <div key={video.id ? video.id : index} className='videoRecording'>
@@ -83,7 +110,9 @@ function App({ signOut, user }) {
                     </div>
                 ))
             }
+            <br />
             <button onClick={signOut}>Sign out</button>
+
         </div>
         // <>
         //     <h1>Hello {user.username}</h1>

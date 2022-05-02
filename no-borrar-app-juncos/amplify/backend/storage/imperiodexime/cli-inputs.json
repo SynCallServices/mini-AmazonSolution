@@ -1,0 +1,14 @@
+{
+  "resourceName": "imperiodexime",
+  "policyUUID": "14d76cb5",
+  "bucketName": "imperiodeximebucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
