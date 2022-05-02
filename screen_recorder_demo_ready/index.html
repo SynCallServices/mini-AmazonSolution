@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Document</title>
     </head>
+
     <link rel="stylesheet" href="styles.css">
+
     <body>
         <div class="header">
             <h1>Demo Screen Recorder</h1>
@@ -24,6 +26,19 @@
         
         <script>
 
+            /*
+            TODO:
+                -convenciones de codigo 
+                    - no usar id porque es practicamente igual a classes
+                    - usar classes en lugar de id, react usa class Name entonces ayuda
+                    - nombres de variables más claras
+                    - ejemplo: div buttons, boton 1 = buttons--button-start
+                    - "--" para indicar que es un child de, y un "-" para un mismo nombre pero largo
+                
+                - buscar que paquetes se necesitan para usar RTC en React.
+                - pasar este proyecto a React, en luagr de html JSX y así. 
+            */
+
             function pausee(rm) {
                 return rm.pause();
             }
@@ -35,10 +50,12 @@
                         mediaSource: "screen",
                     },
                 });
+                // data = Blob array;
                 const data = [];
                 
                 const mediaRecorder = new MediaRecorder(stream);
 
+                // continous contruction of the blob array;
                 mediaRecorder.ondataavailable = (e) => {
                     data.push(e.data);
                 };
@@ -46,12 +63,7 @@
                 //console.log(stream.active);
                 mediaRecorder.start(); // we need to start the recording.
 
-
                 //mediaRecorder.state = pausee(mediaRecorder);
-
-                //mediaRecorder.pause();
-                //mediaRecorder.resume();
-                //mediaRecorder.pause();
 
                 console.log(mediaRecorder.state);
 
@@ -85,8 +97,8 @@
                 // event listener to stop recording //
                 var btn3 = document.getElementById("button3");
                 btn3.addEventListener("click", () => {
+                    // the stream is finished.
                     stream.getTracks().forEach( track => track.stop() ); // stop all tracks.
-                    //mediaRecorder.stop();
                     //stream.active = false; this property is read only, cannot be directly affected.
                     console.log(stream.active);
                 })
@@ -110,26 +122,12 @@
                     }
                 })
 
-
-                // try somethig with pause;
-
-                // nnecesito un pause() antes
-                /*mediaRecorder.onpause = (e) => {
-                    console.log("se cacho la pausa")
-                    if (MediaRecorder.state === "recording") {
-                        mediaRecorder.pause();
-                    }
-                    else if (MediaRecorder.state === "paused") {
-                        mediaRecorder.resume();
-                    }
-                }*/
-
-                //mediaRecorder.stop();
+                //mediaRecorder.stop(); A sole stop doesn't stop all tracks.
                 
                 mediaRecorder.onstop = (e) => {
                     console.log(stream.active);
                     console.log(mediaRecorder.state);
-                    console.log("here");
+                    // When stopped display video.
                     document.querySelector("video").src = URL.createObjectURL(
                         new Blob(data, {
                             type: data[0].type,
@@ -137,8 +135,6 @@
                     );
                 };
             };
-
-            //start();
         </script>
     </body>
 </html>
