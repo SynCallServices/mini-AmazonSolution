@@ -9,7 +9,7 @@ import { createVideo, updateVideo, deleteVideo } from './graphql/mutations';
 import { listVideos } from './graphql/queries';
 
 // React 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 // Necessary amplify configuration
 Amplify.configure(awsconfig);
@@ -17,8 +17,6 @@ Amplify.configure(awsconfig);
 function App({ signOut, user }) {
     // Empty video 
     const video = { agentId: user.username, videoId: "", videoPath: "" };
-    const [s3File, setS3File] = useState();
-    const inputRef = useRef();
     // Use the empty video for the states
     // Idk what states are tho 🥴
     const [state, setState] = useState(video);
