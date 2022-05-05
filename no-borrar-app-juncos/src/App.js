@@ -5,11 +5,14 @@ import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
 
 // GraphQl
-import { createVideo, updateVideo, deleteVideo } from './graphql/mutations';
+import { createVideo } from './graphql/mutations';
 import { listVideos } from './graphql/queries';
 
 // React 
 import { useEffect, useState } from 'react';
+
+// Importing async functions 
+import { logVideos } from './logVideos';
 
 // Necessary amplify configuration
 Amplify.configure(awsconfig);
@@ -34,7 +37,7 @@ function App({ signOut, user }) {
             // Make read request from graphql -> DynamoDb
             const videoData = await API.graphql(graphqlOperation(listVideos));
             const videoList = videoData.data.listVideos.items;
-            console.log('videos', videoList);
+            // console.log('videos', videoList);
             setVideoRecordings(videoList);
         } catch (error) { console.log('Error fetching Videos 🥴', error.errors[0]); }
     }
@@ -97,7 +100,9 @@ function App({ signOut, user }) {
                     ))
                 }
             </ul>
-
+            <br />
+            <button onClick={logVideos}>Try the new external async function!</button>
+            <br /><br />
             <button onClick={signOut}>Sign out</button>
         </div>
     );
