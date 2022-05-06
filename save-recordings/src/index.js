@@ -1,21 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/styles/index.css';
-import DeleteRecording from './components/DeleteRecording';
-// import App from './components/App';
-// import VideoUploader from './components/VideoUploader';
 import Home from './components/Home'
 import reportWebVitals from './reportWebVitals';
-
 import { Amplify } from 'aws-amplify';
 import awsConfig from './aws-exports';
 
 Amplify.configure(awsConfig);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Home />
-  </React.StrictMode>,
+    <React.StrictMode>
+      <Home />
+    </React.StrictMode>,
   document.getElementById('root')
 );
 

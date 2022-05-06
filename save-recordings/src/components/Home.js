@@ -1,7 +1,6 @@
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import '../assets/styles/Home.css'
-import VideoConnections from './VideoConnections'
 import VideoUploader from './VideoUploader';
-import VoiceConnections from './VoiceConnections'
 
 function Home() {
   return (
@@ -11,4 +10,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default withAuthenticator(Home);
