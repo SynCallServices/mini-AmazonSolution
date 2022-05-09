@@ -5,10 +5,10 @@ import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
 
 // React 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // Importing async functions 
-import { fetchVideos, uploadToS3, uploadToDynamo, uploadAll } from './videoFunctions';
+import { fetchVideos, /*uploadToS3, uploadToDynamo,*/ uploadAll, s3Files } from './videoFunctions';
 
 // Necessary amplify configuration
 Amplify.configure(awsconfig);
@@ -19,10 +19,8 @@ function App({ signOut, user }) {
     // Use the empty video for the states
     // Idk what states are tho 🥴
     const [state, setState] = useState(video);
-    const [videoRecordings, setVideoRecordings] = useState([]);
+    // const [videoRecordings, setVideoRecordings] = useState([]);
     let file;
-
-    useEffect(() => { fetchVideos() }, []);
 
     const setInput = (key, value) => { setState({ ...state, [key]: value }); }
 
@@ -62,6 +60,9 @@ function App({ signOut, user }) {
             <br />
             {/* Show videos in terminal button */}
             <button onClick={fetchVideos}>Try the new external async function!</button>
+            <br />
+            {/* List S3 files in console */}
+            <button onClick={s3Files}>Show S3 files in console</button>
 
             <br /><br />
 

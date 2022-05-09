@@ -16,7 +16,7 @@ export async function fetchVideos() {
         console.log('videos external', videoList); // -> just for testing 
         // videoList returns a dictionary for the front end to display
         return videoList;
-    } catch (error) { console.log('Error fetching Videos 🥴', error.errors[0]); }
+    } catch (error) { console.log('Error fetching Videos 🥴', error); }
 }
 
 export async function uploadToS3(file) {
@@ -52,6 +52,13 @@ export async function uploadAll(videoData, file) {
     } catch (error) {
         console.log('Error uploading somewhere 🥴 ', error);
     }
+}
+
+export function s3Files() {
+    // console.log('got into s3Files  function');
+    Storage.list('')
+        .then(result => console.log(result))
+        .catch(err => console.log(err));
 }
 
 // export async function fileUploaded(e) {
