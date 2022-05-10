@@ -8,17 +8,6 @@ import { listVideos } from './graphql/queries';
 // Necessary amplify configuration
 Amplify.configure(awsconfig);
 
-
-export async function fetchVideos() {
-    try {
-        const videoData = await API.graphql(graphqlOperation(listVideos));
-        const videoList = videoData.data.listVideos.items;
-        console.log('videos external', videoList); // -> just for testing 
-        // videoList returns a dictionary for the front end to display
-        return videoList;
-    } catch (error) { console.log('Error fetching Videos 🥴', error); }
-}
-
 export async function uploadToS3(file) {
     try {
         if (file) {
@@ -64,6 +53,18 @@ export async function createOnDynamo(videoData) {
     } catch (error) {
         console.log('Error uploading video to Dynamo 🥴 ', error);
     }
+}
+
+// fetchVideos returns a dictionary, this needs to be handled in 
+// frontend for displaying the videos
+export async function fetchVideos() {
+    try {
+        const videoData = await API.graphql(graphqlOperation(listVideos));
+        const videoList = videoData.data.listVideos.items;
+        console.log('videos external', videoList); // -> just for testing 
+        // videoList returns a dictionary for the front end to display
+        return videoList;
+    } catch (error) { console.log('Error fetching Videos 🥴', error); }
 }
 
 // For updating, unchanged field should be copied in front end so that videoData
