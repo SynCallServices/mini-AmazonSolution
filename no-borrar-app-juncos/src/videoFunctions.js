@@ -2,7 +2,7 @@
 import { Amplify, API, graphqlOperation, Storage } from 'aws-amplify';
 import awsconfig from './aws-exports';
 // GraphQl
-import { createVideo } from './graphql/mutations';
+import * as mutations from './graphql/mutations';
 import { listVideos } from './graphql/queries';
 
 // Necessary amplify configuration
@@ -29,15 +29,7 @@ export async function uploadToS3(file) {
     }
 }
 
-export async function uploadToDynamo(videoData) {
-    try {
-        if (videoData.videoId && videoData.videoPath) {
-            await API.graphql(graphqlOperation(createVideo, { input: videoData }));
-        }
-    } catch (error) {
-        console.log('Error uploading video to Dynamo 🥴 ', error);
-    }
-}
+
 
 export async function uploadAll(videoData, file) {
     // console.log('successfully got into uploadAll external function');
@@ -59,6 +51,40 @@ export function s3Files() {
     Storage.list('')
         .then(result => console.log(result))
         .catch(err => console.log(err));
+}
+
+
+// Dynamo CRUD
+
+// Creating an entry can't have empty fields
+export async function createOnDynamo(videoData) {
+    try {
+        if (videoData.videoId && videoData.videoPath)
+            await API.graphql(graphqlOperation(mutations.createVideo, { input: videoData }));
+    } catch (error) {
+        console.log('Error uploading video to Dynamo 🥴 ', error);
+    }
+}
+
+// For updating, unchanged field should be copied in front end so that videoData
+// has everything it previously had, plus the changes
+export async function updateOnDynamo(videoData) {
+    try {
+        if (videoData.videoId)
+            await API.graphql(graphqlOperation(mutations.updateVideo, { input: videoData }));
+    } catch (error) {
+        console.log(`Error updating ${videoData.videoId} 🥴`, error);
+    }
+}
+
+// Only the id is needed for deleting an item
+export async function deleteOnDynamo(videoId) {
+    try {
+        if (videoId != '')
+            await API.graphql(graphqlOperation(mutations.deleteVideo, { input: videoId }));
+    } catch (error) {
+
+    }
 }
 
 // export async function fileUploaded(e) {
