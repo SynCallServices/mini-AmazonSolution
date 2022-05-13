@@ -18,8 +18,6 @@ export async function uploadToS3(file) {
     }
 }
 
-
-
 export async function uploadAll(videoData, file) {
     // console.log('successfully got into uploadAll external function');
     console.log(file);
