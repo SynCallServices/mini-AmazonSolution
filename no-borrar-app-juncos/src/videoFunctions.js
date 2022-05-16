@@ -3,12 +3,12 @@ import { Amplify, API, graphqlOperation, Storage } from 'aws-amplify';
 import awsconfig from './aws-exports';
 // GraphQl
 import * as mutations from './graphql/mutations';
-import { listVideos } from './graphql/queries';
+import { listVideos, getVideo } from './graphql/queries';
 
 // Necessary amplify configuration
 Amplify.configure(awsconfig);
 
-export async function uploadToS3(file) {
+export async function uploadVideo(file) {
     try {
         if (file) {
             await Storage.put(file.name, file);
@@ -19,7 +19,9 @@ export async function uploadToS3(file) {
 }
 
 export async function uploadAll(videoData, file) {
-    // console.log('successfully got into uploadAll external function');
+    /**
+     * Upload video to S3 and video metadata to dynamoDB
+     */
     console.log(file);
     console.log(videoData);
     try {
@@ -33,7 +35,7 @@ export async function uploadAll(videoData, file) {
     }
 }
 
-export function s3Files() {
+export function listVideoFiles() {
     // console.log('got into s3Files  function');
     Storage.list('')
         .then(result => console.log(result))
@@ -44,7 +46,7 @@ export function s3Files() {
 // Dynamo CRUD
 
 // Creating an entry can't have empty fields
-export async function createOnDynamo(videoData) {
+export async function createVideo(videoData) {
     try {
         if (videoData.videoId && videoData.videoPath)
             await API.graphql(graphqlOperation(mutations.createVideo, { input: videoData }));
@@ -102,3 +104,11 @@ export async function deleteOnDynamo(videoId) {
 //     return window.location.reload();
 // }
 
+export async function fetchVideo(id_) {
+    try {
+        const videoData = await API.graphql({query: getVideo, variables: {id : id_}});
+        console.log(videoData);
+    } catch (err) {
+        console.log(`Error fetching the video with id ${id_}, ${err}`)
+    }
+}

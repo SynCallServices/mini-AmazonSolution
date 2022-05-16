@@ -8,7 +8,7 @@ import awsconfig from './aws-exports';
 import { useState } from 'react';
 
 // Importing async functions 
-import { fetchVideos, /*uploadToS3, uploadToDynamo,*/ uploadAll, s3Files } from './videoFunctions';
+import { fetchVideos, /*uploadToS3, uploadToDynamo,*/ uploadAll, s3Files, fetchVideo } from './videoFunctions';
 
 // Necessary amplify configuration
 Amplify.configure(awsconfig);
