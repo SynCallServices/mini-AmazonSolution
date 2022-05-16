@@ -57,7 +57,7 @@ export async function createVideo(videoData) {
 
 // fetchVideos returns a dictionary, this needs to be handled in 
 // frontend for displaying the videos
-export async function fetchVideos() {
+export async function fetchAllVideos() {
     try {
         const videoData = await API.graphql(graphqlOperation(listVideos));
         const videoList = videoData.data.listVideos.items;
@@ -81,7 +81,7 @@ export async function updateOnDynamo(videoData) {
 // Only the id is needed for deleting an item
 export async function deleteOnDynamo(videoId) {
     try {
-        if (videoId != '')
+        if (videoId !== '')
             await API.graphql(graphqlOperation(mutations.deleteVideo, { input: videoId }));
     } catch (error) {
 
@@ -104,11 +104,27 @@ export async function deleteOnDynamo(videoId) {
 //     return window.location.reload();
 // }
 
-export async function fetchVideo(id_) {
+
+//  Aqui sigue para no cagarla
+// export async function fetchVideo(id) {
+//     console.log(`Got into fetchVideo function, with id ${id}`);
+//     try {
+//         console.log(await API.graphql(graphqlOperation(getVideo, { id: id })));
+//         // const videoData = await API.graphql(graphqlOperation(getVideo, { id: id }));
+//         // console.log(videoData);
+//     } catch (err) {
+//         console.log(`Error fetching the video with id ${id}, ${err}`)
+//     }
+// }
+
+export async function fetchVideo(id) {
+    console.log(`Got into fetchVideo function, with id ${id}`);
     try {
-        const videoData = await API.graphql({query: getVideo, variables: {id : id_}});
-        console.log(videoData);
+        // console.log(await API.graphql({ query: listVideos, filter: { videoId: id } }));
+        console.log(await API.graphql({ query: listVideos, variables: { filter: {videoId: id} } }));
+        // const videoData = await API.graphql(graphqlOperation(getVideo, { id: id }));
+        // console.log(videoData);
     } catch (err) {
-        console.log(`Error fetching the video with id ${id_}, ${err}`)
+        console.log(`Error fetching the video with videoId ${id}`, err)
     }
 }

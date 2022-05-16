@@ -8,7 +8,7 @@ import awsconfig from './aws-exports';
 import { useState } from 'react';
 
 // Importing async functions 
-import { fetchVideos, /*uploadToS3, uploadToDynamo,*/ uploadAll, s3Files, fetchVideo } from './videoFunctions';
+import { fetchAllVideos, /*uploadToS3, uploadToDynamo,*/ uploadAll, fetchVideo } from './videoFunctions';
 
 // Necessary amplify configuration
 Amplify.configure(awsconfig);
@@ -30,6 +30,10 @@ function App({ signOut, user }) {
 
     function sendToAsync() {
         uploadAll(state, file);
+    }
+
+    function fetchOneVideo() {
+        fetchVideo('test5');
     }
 
     return (
@@ -59,13 +63,12 @@ function App({ signOut, user }) {
             <button onClick={sendToAsync}>Create Video Recording entry</button>
             <br />
             {/* Show videos in terminal button */}
-            <button onClick={fetchVideos}>Try the new external async function!</button>
+            <button onClick={fetchAllVideos}>Try the new external async function!</button>
             <br />
             {/* List S3 files in console */}
-            <button onClick={s3Files}>Show S3 files in console</button>
-
+            {/* <button onClick={s3Files}>Show S3 files in console</button> */}
+            <button onClick={fetchOneVideo}>Display some video on console</button>
             <br /><br />
-
             <button onClick={signOut}>Sign out</button>
         </div >
     );
